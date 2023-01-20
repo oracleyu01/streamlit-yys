@@ -6,6 +6,9 @@ import numpy as np
 
 money = pd.read_csv("money_data7.csv")
 
+# Object notation
+st.sidebar.[element_name]
+
 option = st.selectbox(
     'How would you like to choice year ?',
     ('2020', '2021', '2022'))
