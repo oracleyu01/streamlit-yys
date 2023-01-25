@@ -54,5 +54,5 @@ with st.form(key ='Form1'):
         submitted1 = st.form_submit_button(label = 'Search Twitter 🔎')
          
         
-        
-plotting_demo()      
+if select_language =='All':        
+    plotting_demo()      
