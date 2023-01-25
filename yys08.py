@@ -3,10 +3,21 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-
 money = pd.read_csv("money_data7.csv")
 
 st.sidebar.success("Select a demo above.")
+
+
+st.set_page_config(page_title="Plotting Demo", page_icon="📈")
+st.markdown("# Plotting Demo")
+st.sidebar.header("Plotting Demo")
+st.write(
+    """This demo illustrates a combination of plotting and animation with
+Streamlit. We're generating a bunch of random numbers in a loop for around
+5 seconds. Enjoy!"""
+)
+
+
 
 option = st.selectbox(
     'How would you like to choice year ?',
@@ -43,13 +54,3 @@ plt.title('House Price')
 
 st.pyplot(fig)
 st.dataframe(money)
-
-st.set_page_config(page_title="Plotting Demo", page_icon="📈")
-st.markdown("# Plotting Demo")
-st.sidebar.header("Plotting Demo")
-st.write(
-    """This demo illustrates a combination of plotting and animation with
-Streamlit. We're generating a bunch of random numbers in a loop for around
-5 seconds. Enjoy!"""
-)
-
