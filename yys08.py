@@ -5,9 +5,9 @@ import numpy as np
 
 money = pd.read_csv("money_data7.csv")
 
-#st.sidebar.success("Select a demo above.")
+st.sidebar.success("Select a demo above.")
 
-with st.form(key ='Form1'):
+def  plotting_demo():
    
     option = st.selectbox(
         'How would you like to choice year ?',
@@ -44,3 +44,15 @@ with st.form(key ='Form1'):
 
     st.pyplot(fig)
     st.dataframe(money)
+
+      
+st.set_page_config(page_title="Plotting Demo", page_icon="📈")
+st.markdown("# Plotting Demo")
+st.sidebar.header("Plotting Demo")
+st.write(
+    """This demo illustrates a combination of plotting and animation with
+Streamlit. We're generating a bunch of random numbers in a loop for around
+5 seconds. Enjoy!"""
+)
+
+plotting_demo()      
