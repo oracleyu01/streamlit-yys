@@ -47,11 +47,11 @@ def  plotting_demo():
 
 with st.form(key ='Form1'):
     with st.sidebar:
-        user_word = st.sidebar.text_input("Enter a keyword", "habs")    
-        select_language = st.sidebar.radio('Tweet language', ('All', 'English', 'French'))
-        include_retweets = st.sidebar.checkbox('Include retweets in data')
-        num_of_tweets = st.sidebar.number_input('Maximum number of tweets', 100)
-        submitted1 = st.form_submit_button(label = 'Search Twitter 🔎')
+        #user_word = st.sidebar.text_input("Enter a keyword", "habs")    
+        select_language = st.sidebar.radio('What do you want treand?', ('Money', 'baseball', 'text mining'))
+        #include_retweets = st.sidebar.checkbox('Include retweets in data')
+        #num_of_tweets = st.sidebar.number_input('Maximum number of tweets', 100)
+        #submitted1 = st.form_submit_button(label = 'Search Twitter 🔎')
          
         
 if select_language =='All':        
