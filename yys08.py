@@ -8,20 +8,6 @@ money = pd.read_csv("money_data7.csv")
 st.sidebar.success("Select a demo above.")
 
 
-st.set_page_config(
-    page_title="Ex-stream-ly Cool App",
-    page_icon="🧊",
-    layout="wide",
-    initial_sidebar_state="expanded",
-    menu_items={
-        'Get Help': 'https://www.extremelycoolapp.com/help',
-        'Report a bug': "https://www.extremelycoolapp.com/bug",
-        'About': "# This is a header. This is an *extremely* cool app!"
-    }
-)
-
-
-
 option = st.selectbox(
     'How would you like to choice year ?',
     ('2020', '2021', '2022'))
