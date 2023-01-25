@@ -48,11 +48,11 @@ def  plotting_demo():
 with st.form(key ='Form1'):
     with st.sidebar:
         #user_word = st.sidebar.text_input("Enter a keyword", "habs")    
-        select_language = st.sidebar.radio('What do you want treand?', ('Money', 'baseball', 'text mining'))
+        select_language = st.sidebar.radio('What do you want treand?', ('line graph', 'bar graph', 'pie graph', 'histogram graph', 'corr graph', 'word cloud'))
         #include_retweets = st.sidebar.checkbox('Include retweets in data')
         #num_of_tweets = st.sidebar.number_input('Maximum number of tweets', 100)
         #submitted1 = st.form_submit_button(label = 'Search Twitter 🔎')
          
         
-if select_language =='Money':        
+if select_language =='line graph':        
     plotting_demo()      
