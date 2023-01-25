@@ -5,8 +5,15 @@ import numpy as np
 
 money = pd.read_csv("money_data7.csv")
 
-st.sidebar.success("Select a demo above.")
+#st.sidebar.success("Select a demo above.")
 
+with st.form(key ='Form1'):
+    with st.sidebar:
+        user_word = st.sidebar.text_input("Enter a keyword", "habs")    
+        select_language = st.sidebar.radio('Tweet language', ('All', 'English', 'French'))
+        include_retweets = st.sidebar.checkbox('Include retweets in data')
+        num_of_tweets = st.sidebar.number_input('Maximum number of tweets', 100)
+        submitted1 = st.form_submit_button(label = 'Search Twitter 🔎')
 
 option = st.selectbox(
     'How would you like to choice year ?',
