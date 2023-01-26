@@ -57,5 +57,8 @@ with st.form(key ='Form1'):
         select_language = st.sidebar.radio('What do you want ?', ('line', 'bar', 'pie'))
         
         
-if select_language =='line':        
-    plotting_demo()      
+if select_language =='line':           
+    try:
+          plotting_demo()  
+    except:      
+          pass
