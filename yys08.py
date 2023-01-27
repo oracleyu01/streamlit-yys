@@ -3,9 +3,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-#money = pd.read_csv("money_data7.csv")
-
-#st.sidebar.success("Select a demo above.")
 
 def  plotting_demo():
     
@@ -54,7 +51,7 @@ def  plotting_demo():
 with st.form(key ='Form1'):
     with st.sidebar:
         
-        select_language = st.sidebar.radio('What do you want ?', ('line', 'bar', 'pie', 'box', 'histogram', 'corr', 'word cloud'))
+        select_language = st.sidebar.radio('What do you want ?', ('line', 'bar', 'pie'))
         
         
 if select_language =='line':           
