@@ -76,6 +76,8 @@ def bar_chart():
     df  =  baseball[:] [ baseball.년도==option2 ]
     x = df.팀
     y = df.승률
+    
+    fig, ax = plt.subplots(figsize=(12,8))
 
     colors = ['C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7' ,'C8', 'C9', 'C10' ]
     plt.bar(  x,  y,  color= colors ) 
@@ -84,7 +86,7 @@ def bar_chart():
         plt.text (  num -0.4  ,   v + 0.01 ,  v   )
 
     plt.title( "year korea baseball winrate data", position=(0.5,1.1))
-    plt.show() 
+    st.pyplot(fig)
 
         
 
