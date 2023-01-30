@@ -73,9 +73,9 @@ def bar_chart():
 
     st.write('You selected:', option)
 
-    df  =  baseball[:] [ baseball.년도==option2 ]
-    x = df.팀
-    y = df.승률
+    df7  =  baseball[:] [ baseball.년도==option2 ]
+    x = df7.팀
+    y = df7.승률
     
     fig, ax = plt.subplots(figsize=(12,8))
 
