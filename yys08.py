@@ -60,8 +60,8 @@ def bar_chart():
         df1 = pd.read_html( url + i  )[0]
         df1['년도'] =  i 
         df = pd.concat([df, df1], axis=0)
-
-    df    
+        
+    baseball = df    
 
     baseball.팀.replace({'두산':'Dusan','삼성':'SS','키움':'KU','한화': 'HH','롯데':'Lotte','넥센':'NecSen'}, inplace=True)
     
@@ -103,8 +103,6 @@ if select_language =='line':
           pass
 
         
-elif select_language =='bar':       
-    try:
-          bar_chart()  
-    except:      
-          pass
+elif select_language =='bar':
+    bar_chart()
+ 
