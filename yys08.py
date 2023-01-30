@@ -15,7 +15,7 @@ def  plotting_demo():
         'How would you like to choice year ?',
         ('2020', '2021', '2022'))
 
-    option2 = option
+    option2 = int(option)
 
     st.write('You selected:', option)
 
@@ -69,7 +69,7 @@ def bar_chart():
         'How would you like to choice year ?',
         ('2015', '2016','2017', '2018', '2019', '2020', '2021', '2022'))
 
-    option2 = int(option)
+    option2 = option
 
     st.write('You selected:', option)
 
