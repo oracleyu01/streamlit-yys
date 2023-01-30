@@ -47,9 +47,6 @@ def  plotting_demo():
     st.pyplot(fig)
     st.dataframe(money)
        
- import  pandas   as  pd 
-import   matplotlib.pyplot   as   plt 
-import  pandas   as   pd 
 
 def bar_chart():
 
