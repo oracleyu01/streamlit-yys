@@ -6,10 +6,10 @@ import numpy as np
 
 def  plotting_demo():
     
-    uploaded_file = st.file_uploader("Choose a file")
+    #uploaded_file = st.file_uploader("Choose a file")
 
-    money=pd.read_csv(uploaded_file)
-   # money = pd.read_csv("money_data7.csv")
+    #money=pd.read_csv(uploaded_file)
+    money = pd.read_csv("money_data7.csv")
 
     option = st.selectbox(
         'How would you like to choice year ?',
