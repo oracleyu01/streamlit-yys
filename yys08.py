@@ -94,7 +94,7 @@ st.set_page_config(layout="centered")
 with st.form(key ='Form1'):
     with st.sidebar:
         
-        select_language = st.sidebar.radio('What do you want ?', ('line', 'bar', 'pie'))
+        select_language = st.sidebar.radio('데이터 분석 결과', ('집값에 영향을 미치는 것은 금리인가?', '야구 순위와 승률은 서로 상관관계가 있는가?', '다른 데이터 분석'))
         
         
 if select_language =='line':           
