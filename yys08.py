@@ -104,6 +104,6 @@ if select_language =='금리와 집값 빠르게 파악하기':
           pass
 
         
-elif select_language =='국내 야구 순위와 승률 빠르게 파악하기':
+elif select_language =='야구 순위와 승률 빠르게 파악하기':
     bar_chart()
  
