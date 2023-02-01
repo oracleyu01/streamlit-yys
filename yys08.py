@@ -51,7 +51,6 @@ def  plotting_demo():
     st.pyplot(fig)
     #st.dataframe(money)
        
-aa = None
         
 def bar_chart():
 
