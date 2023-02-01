@@ -99,6 +99,7 @@ with st.form(key ='Form1'):
         
 if select_language =='금리와 집값 빠르게 파악하기':  
     tab1, tab2 = st.tabs(["📈 Chart", "🗃 Data"])
+    data = np.random.randn(10, 1)
 
     tab1.subheader("A tab with a chart")
     plotting_demo()
