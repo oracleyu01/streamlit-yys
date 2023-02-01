@@ -24,8 +24,6 @@ def  plotting_demo():
     global  aa
     
     aa = money
-    
-    aa = aa.to_string(index=False)
 
     fig, ax = plt.subplots(2,2, figsize=(12,8))
 
