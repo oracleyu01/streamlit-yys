@@ -21,11 +21,11 @@ def  plotting_demo():
 
     money = money[:] [money['A_YEAR']== option2]
     
-    money = money.to_string(index=False)
-    
     global  aa
     
     aa = money
+    
+    aa = aa.to_string(index=False)
 
     fig, ax = plt.subplots(2,2, figsize=(12,8))
 
