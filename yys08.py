@@ -49,7 +49,7 @@ def  plotting_demo():
     plt.title('House Price')
 
     st.pyplot(fig)
-    st.dataframe(money)
+    #st.dataframe(money)
        
 aa = None
         
