@@ -94,7 +94,8 @@ st.set_page_config(layout="centered")
 with st.form(key ='Form1'):
     with st.sidebar:
         
-        select_language =  st.sidebar.selectbox('데이터 분석 결과', ('금리와 집값 빠르게 파악하기', '야구 순위와 승률 빠르게 파악하기', '다른 데이터 분석'))
+        #select_language =  st.sidebar.selectbox('데이터 분석 결과', ('금리와 집값 빠르게 파악하기', '야구 순위와 승률 빠르게 파악하기', '다른 데이터 분석'))
+        submit_button = st.form_submit_button(label='Submit')
         
         
 if select_language =='금리와 집값 빠르게 파악하기':  
