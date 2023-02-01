@@ -21,6 +21,8 @@ def  plotting_demo():
 
     money = money[:] [money['A_YEAR']== option2]
     
+    money = money.to_string(index=False))
+    
     global  aa
     
     aa = money
