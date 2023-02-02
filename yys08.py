@@ -100,8 +100,6 @@ def bar_chart():
     
 def baseball_pie_chart():
     
-    opt = st.selectbox(
-  
     
     fig, ax = plt.subplots(figsize=(8,5))
     
