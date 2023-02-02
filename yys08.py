@@ -97,6 +97,14 @@ def bar_chart():
     st.pyplot(fig)
     #st.dataframe(df7)
     
+def baseball_pie_chart():
+    fig, ax = plt.subplots(figsize=(12,8))
+    
+    x = list( bb.승률)
+    y = list( bb.팀 )
+    
+    plt.pie( x, labels = y, autopct='%0.00f%%',colors= ['C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7' ,'C8', 'C9', 'C10' ], alpha=0.5 ) 
+    st.pyplot(fig)
    
 st.set_page_config(layout="wide")        
 
@@ -121,7 +129,7 @@ if select_language =='금리가 집값에 영향을 미치는지 빠르게 파�
 
         
 elif select_language =='야구의 승률과 순위의 관계 빠르게 파악하기':
-    tab1, tab2 = st.tabs(["📈 Chart", "🗃 Data"])
+    tab1, tab2, tab3 = st.tabs(["📈 Bar Chart", "📈 Pie Chart", "🗃 Data"])
     
     with tab1:
         tab1.subheader("야구의 승률과 순위의 관계 빠르게 파악하기")
@@ -129,6 +137,10 @@ elif select_language =='야구의 승률과 순위의 관계 빠르게 파악하
         
     with tab2:
         tab2.subheader("A tab with the data")
+        baseball_pie_chart()        
+        
+    with tab3:
+        tab3.subheader("A tab with the data")
         st.dataframe(bb)
   
 
