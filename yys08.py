@@ -76,6 +76,8 @@ def bar_chart():
     option2 = option
 
     st.write('You selected:', option)
+    
+    global baseball
 
     df7  =  baseball[:] [ baseball.년도==option2 ]
     x = df7.팀
@@ -106,6 +108,8 @@ def baseball_pie_chart():
     opt2 = opt
 
     st.write('You selected:', opt)
+    
+    global baseball
 
     df8  =  baseball[:] [ baseball.년도==opt2 ]
     
