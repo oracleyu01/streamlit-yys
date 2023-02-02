@@ -81,6 +81,10 @@ def bar_chart():
     x = df7.팀
     y = df7.승률
     
+    global bb
+    bb = df7
+    
+    
     fig, ax = plt.subplots(figsize=(12,8))
 
     colors = ['C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7' ,'C8', 'C9', 'C10' ]
@@ -91,7 +95,7 @@ def bar_chart():
 
     plt.title( "year korea baseball winrate data", position=(0.5,1.1))
     st.pyplot(fig)
-    st.dataframe(df7)
+    #st.dataframe(df7)
 
 st.set_page_config(layout="centered")        
 
@@ -117,5 +121,13 @@ if select_language =='금리와 집값 빠르게 파악하기':
 
         
 elif select_language =='야구 순위와 승률 빠르게 파악하기':
-    bar_chart()
+    with tab1:
+        tab1.subheader("A tab with a chart")
+        bar_chart()
+        
+    with tab2:
+        tab2.subheader("A tab with the data")
+        st.dataframe(df7.style.highlight_max(axis=1))
+  
+
  
