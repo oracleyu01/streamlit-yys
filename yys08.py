@@ -108,7 +108,7 @@ def baseball_line_chart():
     x = df7.팀
     y = df7.승률
     
-    plt.plot( x, y color='red' , marker='o'     ) 
+    plt.plot( x, y, color='red' , marker='o'     ) 
     plt.xticks(tuple(x) )
     plt.title('두산 승률')
 
@@ -118,7 +118,7 @@ def baseball_line_chart():
     x = df7.팀
     y = df7.승률
     
-    plt.plot( x, y color='red' , marker='o'     ) 
+    plt.plot( x, y, color='red' , marker='o'     ) 
     plt.xticks(tuple(x) )
     plt.title('넥슨 승률')
 
@@ -127,7 +127,7 @@ def baseball_line_chart():
     x = df7.팀
     y = df7.승률
     
-    plt.plot( x, y color='red' , marker='o'     ) 
+    plt.plot( x, y, color='red' , marker='o'     ) 
     plt.xticks(tuple(x) )
     plt.title('롯데 승률')
 
@@ -137,7 +137,7 @@ def baseball_line_chart():
     x = df7.팀
     y = df7.승률
     
-    plt.plot( x, y color='red' , marker='o'     ) 
+    plt.plot( x, y, color='red' , marker='o'     ) 
     plt.xticks(tuple(x) )
     plt.title('SK 승률')
 
