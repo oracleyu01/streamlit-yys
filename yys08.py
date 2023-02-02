@@ -101,7 +101,7 @@ def bar_chart():
 def baseball_pie_chart():
     
     
-    fig, ax = plt.subplots(figsize=(8,5))
+    fig, ax = plt.subplots()
     
     x = list( bb.승률)
     y = list( bb.팀 )
