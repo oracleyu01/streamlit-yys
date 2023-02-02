@@ -107,12 +107,12 @@ def baseball_pie_chart():
 
     st.write('You selected:', opt)
 
-    df7  =  baseball[:] [ baseball.년도==opt2 ]
+    df8  =  baseball[:] [ baseball.년도==opt2 ]
     
     fig, ax = plt.subplots(figsize=(8,5))
     
-    x = list( df7.승률)
-    y = list( df7.팀 )
+    x = list( df8.승률)
+    y = list( df8.팀 )
     
     plt.pie( x, labels = y, autopct='%0.00f%%',colors= ['C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7' ,'C8', 'C9', 'C10' ],wedgeprops={"alpha": 0.5} ) 
     st.pyplot(fig)
