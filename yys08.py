@@ -99,15 +99,15 @@ def bar_chart():
     
 def baseball_pie_chart():
     
-    option = st.selectbox(
+    opt = st.selectbox(
     'How would you like to choice year ?',
     ('2015', '2016','2017', '2018', '2019', '2020', '2021', '2022'))
 
-    option2 = option
+    opt2 = opt
 
-    st.write('You selected:', option)
+    st.write('You selected:', opt)
 
-    df7  =  baseball[:] [ baseball.년도==option2 ]
+    df7  =  baseball[:] [ baseball.년도==opt2 ]
     
     fig, ax = plt.subplots(figsize=(8,5))
     
