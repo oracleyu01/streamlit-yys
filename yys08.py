@@ -98,7 +98,7 @@ def bar_chart():
     #st.dataframe(df7)
     
 def baseball_pie_chart():
-    fig, ax = plt.subplots(figsize=(12,8))
+    fig, ax = plt.subplots(figsize=(10,7))
     
     x = list( bb.승률)
     y = list( bb.팀 )
