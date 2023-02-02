@@ -112,7 +112,7 @@ def baseball_line_chart():
     y = df71.승률
     
     plt.plot( x, list(y), color='red' , marker='o'     ) 
-    plt.xticks( years2 )
+    #plt.xticks( years2 )
     plt.title('Dusan Rate')
 
 
@@ -122,7 +122,7 @@ def baseball_line_chart():
     y = df72.승률
     
     plt.plot( x, list(y), color='red' , marker='o'     ) 
-    plt.xticks( years2 )
+   # plt.xticks( years2 )
     plt.title('NC Rate')
 
     plt.subplot(223)
@@ -131,7 +131,7 @@ def baseball_line_chart():
     y = df73.승률
     
     plt.plot( x, list(y), color='red' , marker='o'     ) 
-    plt.xticks( years2 )
+    #plt.xticks( years2 )
     plt.title('Lotte Rate')
 
 
@@ -141,7 +141,7 @@ def baseball_line_chart():
     y = df74.승률
     
     plt.plot( x, list(y), color='red' , marker='o'     ) 
-    plt.xticks( years2 )
+    #plt.xticks( years2 )
     plt.title('SK rate')
 
     st.pyplot(fig)
