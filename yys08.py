@@ -102,13 +102,15 @@ def baseball_line_chart():
     
     
     fig, ax = plt.subplots(2,2, figsize=(12,8))
+    
+    years = ['2015', '2016','2017', '2018', '2019', '2020', '2021', '2022' ]
 
     plt.subplot(221)
     df71  =  bb[:] [ bb.팀=='Dusan' ]
-    x = df71.년도
+    x = years
     y = df71.승률
     
-    plt.plot( list(x), list(y), color='red' , marker='o'     ) 
+    plt.plot( x, list(y), color='red' , marker='o'     ) 
     plt.xticks(tuple(x) )
     plt.title('Dusan Rate')
 
@@ -118,7 +120,7 @@ def baseball_line_chart():
     x = df72.년도
     y = df72.승률
     
-    plt.plot( list(x), list(y), color='red' , marker='o'     ) 
+    plt.plot( x, list(y), color='red' , marker='o'     ) 
     plt.xticks(tuple(x) )
     plt.title('NC Rate')
 
@@ -127,7 +129,7 @@ def baseball_line_chart():
     x = df73.년도
     y = df73.승률
     
-    plt.plot( list(x), list(y), color='red' , marker='o'     ) 
+    plt.plot( x, list(y), color='red' , marker='o'     ) 
     plt.xticks(tuple(x) )
     plt.title('Lotte Rate')
 
@@ -137,7 +139,7 @@ def baseball_line_chart():
     x = df74.년도
     y = df74.승률
     
-    plt.plot( list(x), list(y), color='red' , marker='o'     ) 
+    plt.plot( x, list(y), color='red' , marker='o'     ) 
     plt.xticks(tuple(x) )
     plt.title('SK rate')
 
