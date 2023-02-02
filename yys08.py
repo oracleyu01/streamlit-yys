@@ -111,7 +111,7 @@ if select_language =='금리와 집값 빠르게 파악하기':
         
     with tab2:
         tab2.subheader("A tab with the data")
-        st.dataframe(aa)
+        st.dataframe(aa, 200, 300)
   
 
         
