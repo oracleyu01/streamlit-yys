@@ -79,7 +79,7 @@ def bar_chart():
    
 
     df7  =  baseball[:] [ baseball.년도==option2 ]
-    x = df7.
+    x = df7.팀
     y = df7.승률
     
     global bb
@@ -105,7 +105,7 @@ def baseball_line_chart():
 
     plt.subplot(221)
     df7  =  bb[:] [ bb.팀=='Dusan' ]
-    x = df7.팀
+    x = df7.년도
     y = df7.승률
     
     plt.plot( x, y, color='red' , marker='o'     ) 
@@ -115,7 +115,7 @@ def baseball_line_chart():
 
     plt.subplot(222)
     df7  =  bb[:] [ bb.팀=='NC' ]
-    x = df7.팀
+    x = df7.년도
     y = df7.승률
     
     plt.plot( x, y, color='red' , marker='o'     ) 
@@ -124,7 +124,7 @@ def baseball_line_chart():
 
     plt.subplot(223)
     df7  =  bb[:] [ bb.팀=='Lotte' ]
-    x = df7.팀
+    x = df7.년도
     y = df7.승률
     
     plt.plot( x, y, color='red' , marker='o'     ) 
@@ -134,7 +134,7 @@ def baseball_line_chart():
 
     plt.subplot(224)
     df7  =  bb[:] [ bb.팀=='SK' ]
-    x = df7.팀
+    x = df7.년도
     y = df7.승률
     
     plt.plot( x, y, color='red' , marker='o'     ) 
