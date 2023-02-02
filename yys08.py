@@ -104,42 +104,42 @@ def baseball_line_chart():
     fig, ax = plt.subplots(2,2, figsize=(12,8))
 
     plt.subplot(221)
-    df7  =  bb[:] [ bb.팀=='Dusan' ]
-    x = df7.년도
-    y = df7.승률
+    df71  =  bb[:] [ bb.팀=='Dusan' ]
+    x = df71.년도
+    y = df71.승률
     
-    plt.plot( x, y, color='red' , marker='o'     ) 
+    plt.plot( list(x), list(y), color='red' , marker='o'     ) 
     plt.xticks(tuple(x) )
-    plt.title('두산 승률')
+    plt.title('Dusan Rate')
 
 
     plt.subplot(222)
-    df7  =  bb[:] [ bb.팀=='NC' ]
-    x = df7.년도
-    y = df7.승률
+    df72  =  bb[:] [ bb.팀=='NC' ]
+    x = df72.년도
+    y = df72.승률
     
-    plt.plot( x, y, color='red' , marker='o'     ) 
+    plt.plot( list(x), list(y), color='red' , marker='o'     ) 
     plt.xticks(tuple(x) )
-    plt.title('넥슨 승률')
+    plt.title('NC Rate')
 
     plt.subplot(223)
-    df7  =  bb[:] [ bb.팀=='Lotte' ]
-    x = df7.년도
-    y = df7.승률
+    df73  =  bb[:] [ bb.팀=='Lotte' ]
+    x = df73.년도
+    y = df73.승률
     
-    plt.plot( x, y, color='red' , marker='o'     ) 
+    plt.plot( list(x), list(y), color='red' , marker='o'     ) 
     plt.xticks(tuple(x) )
-    plt.title('롯데 승률')
+    plt.title('Lotte Rate')
 
 
     plt.subplot(224)
-    df7  =  bb[:] [ bb.팀=='SK' ]
-    x = df7.년도
-    y = df7.승률
+    df74  =  bb[:] [ bb.팀=='SK' ]
+    x = df74.년도
+    y = df74.승률
     
-    plt.plot( x, y, color='red' , marker='o'     ) 
+    plt.plot( list(x), list(y), color='red' , marker='o'     ) 
     plt.xticks(tuple(x) )
-    plt.title('SK 승률')
+    plt.title('SK rate')
 
     st.pyplot(fig)
        
