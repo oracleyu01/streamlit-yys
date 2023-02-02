@@ -103,7 +103,7 @@ def baseball_pie_chart():
     x = list( bb.승률)
     y = list( bb.팀 )
     
-    plt.pie( x, labels = y, autopct='%0.00f%%',colors= ['C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7' ,'C8', 'C9', 'C10' ] ) 
+    plt.pie( x, labels = y, autopct='%0.00f%%',colors= ['C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7' ,'C8', 'C9', 'C10' ],wedgeprops={"alpha": 0.5} ) 
     st.pyplot(fig)
        
 
