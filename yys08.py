@@ -79,7 +79,7 @@ def bar_chart():
    
 
     df7  =  baseball[:] [ baseball.년도==option2 ]
-    x = df7.팀
+    x = df7.
     y = df7.승률
     
     global bb
@@ -165,7 +165,7 @@ if select_language =='금리가 집값에 영향을 미치는지 빠르게 파�
 
         
 elif select_language =='야구의 승률과 순위의 관계 빠르게 파악하기':
-    tab1, tab2, tab3 = st.tabs(["📈 Bar Chart", "📈 Pie Chart", "🗃 Data"])
+    tab1, tab2, tab3 = st.tabs(["📈 Bar Chart", "📈  Chart", "🗃 Data"])
     
     with tab1:
         tab1.subheader("야구의 승률과 순위의 관계 빠르게 파악하기")
