@@ -76,8 +76,7 @@ def bar_chart():
     option2 = option
 
     st.write('You selected:', option)
-    
-    global baseball
+   
 
     df7  =  baseball[:] [ baseball.년도==option2 ]
     x = df7.팀
@@ -102,21 +101,12 @@ def bar_chart():
 def baseball_pie_chart():
     
     opt = st.selectbox(
-    'How would you like to choice year ?',
-    ('2015', '2016','2017', '2018', '2019', '2020', '2021', '2022'))
-
-    opt2 = opt
-
-    st.write('You selected:', opt)
-    
-    global baseball
-
-    df8  =  baseball[:] [ baseball.년도==opt2 ]
+  
     
     fig, ax = plt.subplots(figsize=(8,5))
     
-    x = list( df8.승률)
-    y = list( df8.팀 )
+    x = list( bb.승률)
+    y = list( bb.팀 )
     
     plt.pie( x, labels = y, autopct='%0.00f%%',colors= ['C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7' ,'C8', 'C9', 'C10' ],wedgeprops={"alpha": 0.5} ) 
     st.pyplot(fig)
