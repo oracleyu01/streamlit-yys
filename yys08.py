@@ -98,15 +98,49 @@ def bar_chart():
     st.pyplot(fig)
     #st.dataframe(df7)
     
-def baseball_pie_chart():
+def baseball_line_chart():
     
     
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(2,2, figsize=(12,8))
+
+    plt.subplot(221)
+    df7  =  bb[:] [ bb.팀=='Dusan' ]
+    x = df7.팀
+    y = df7.승률
     
-    x = list( bb.승률)
-    y = list( bb.팀 )
+    plt.plot( x, y color='red' , marker='o'     ) 
+    plt.xticks(tuple(x) )
+    plt.title('두산 승률')
+
+
+    plt.subplot(222)
+    df7  =  bb[:] [ bb.팀=='NC' ]
+    x = df7.팀
+    y = df7.승률
     
-    plt.pie( x, labels = y, autopct='%0.00f%%',colors= ['C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7' ,'C8', 'C9', 'C10' ],wedgeprops={"alpha": 0.5} ) 
+    plt.plot( x, y color='red' , marker='o'     ) 
+    plt.xticks(tuple(x) )
+    plt.title('넥슨 승률')
+
+    plt.subplot(223)
+    df7  =  bb[:] [ bb.팀=='Lotte' ]
+    x = df7.팀
+    y = df7.승률
+    
+    plt.plot( x, y color='red' , marker='o'     ) 
+    plt.xticks(tuple(x) )
+    plt.title('롯데 승률')
+
+
+    plt.subplot(224)
+    df7  =  bb[:] [ bb.팀=='SK' ]
+    x = df7.팀
+    y = df7.승률
+    
+    plt.plot( x, y color='red' , marker='o'     ) 
+    plt.xticks(tuple(x) )
+    plt.title('SK 승률')
+
     st.pyplot(fig)
        
 
@@ -139,7 +173,7 @@ elif select_language =='야구의 승률과 순위의 관계 빠르게 파악하
         
     with tab2:
         tab2.subheader("A tab with the data")
-        baseball_pie_chart()        
+        baseball_line_chart()        
         
     with tab3:
         tab3.subheader("A tab with the data")
