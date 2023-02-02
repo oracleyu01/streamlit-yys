@@ -88,7 +88,7 @@ def bar_chart():
     fig, ax = plt.subplots(figsize=(12,8))
 
     colors = ['C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7' ,'C8', 'C9', 'C10' ]
-    plt.bar(  x,  y,  color= colors ) 
+    plt.bar(  x,  y,  color= colors, alpha=0.7 ) 
 
     for   num ,   v    in   enumerate( y ):
         plt.text (  num -0.4  ,   v + 0.01 ,  v   )
@@ -129,7 +129,7 @@ elif select_language =='야구 순위와 승률 빠르게 파악하기':
         
     with tab2:
         tab2.subheader("A tab with the data")
-        st.dataframe(df7.style.highlight_max(axis=1))
+        st.dataframe(bb.style.highlight_max(axis=1))
   
 
  
