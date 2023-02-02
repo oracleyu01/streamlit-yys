@@ -51,23 +51,23 @@ def  plotting_demo():
     st.pyplot(fig)
     #st.dataframe(money)
        
+url = "https://sports.news.naver.com/kbaseball/record/index?category=kbo&year="
+
+years = ['2015', '2016','2017', '2018', '2019', '2020', '2021', '2022' ]
+
+df = pd.DataFrame([]) 
+
+for    i    in     years: 
+    df1 = pd.read_html( url + i  )[0]
+    df1['년도'] =  i 
+    df = pd.concat([df, df1], axis=0)
+
+baseball = df    
+
+baseball.팀.replace({'두산':'Dusan','삼성':'SS','키움':'KU','한화': 'HH','롯데':'Lotte','넥센':'NecSen'}, inplace=True)
+
         
 def bar_chart():
-
-    url = "https://sports.news.naver.com/kbaseball/record/index?category=kbo&year="
-
-    years = ['2015', '2016','2017', '2018', '2019', '2020', '2021', '2022' ]
-
-    df = pd.DataFrame([]) 
-
-    for    i    in     years: 
-        df1 = pd.read_html( url + i  )[0]
-        df1['년도'] =  i 
-        df = pd.concat([df, df1], axis=0)
-        
-    baseball = df    
-
-    baseball.팀.replace({'두산':'Dusan','삼성':'SS','키움':'KU','한화': 'HH','롯데':'Lotte','넥센':'NecSen'}, inplace=True)
     
     option = st.selectbox(
         'How would you like to choice year ?',
@@ -98,7 +98,18 @@ def bar_chart():
     #st.dataframe(df7)
     
 def baseball_pie_chart():
-    fig, ax = plt.subplots(figsize=(10,7))
+    
+   option = st.selectbox(
+    'How would you like to choice year ?',
+    ('2015', '2016','2017', '2018', '2019', '2020', '2021', '2022'))
+
+    option2 = option
+
+    st.write('You selected:', option)
+
+    df7  =  baseball[:] [ baseball.년도==option2 ]
+    
+    fig, ax = plt.subplots(figsize=(8,5))
     
     x = list( bb.승률)
     y = list( bb.팀 )
