@@ -99,7 +99,7 @@ def bar_chart():
     
 def baseball_pie_chart():
     
-   option = st.selectbox(
+    option = st.selectbox(
     'How would you like to choice year ?',
     ('2015', '2016','2017', '2018', '2019', '2020', '2021', '2022'))
 
