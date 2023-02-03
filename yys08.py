@@ -98,53 +98,6 @@ def bar_chart():
     st.pyplot(fig)
     #st.dataframe(df7)
     
-def baseball_line_chart():
-    
-    
-    fig, ax = plt.subplots(2,2, figsize=(12,8))
-    
-    years = ['2015', '2016','2017', '2018', '2019', '2020', '2021', '2022' ]
-    years2 = ('2015', '2016','2017', '2018', '2019', '2020', '2021', '2022')
-
-    plt.subplot(221)
-    df71  =  bb[:] [ bb.팀=='Dusan' ]
-    x = years
-    y = df71.승률
-    
-    plt.plot( x, list(y), color='red' , marker='o'     ) 
-    #plt.xticks( years2 )
-    plt.title('Dusan Rate')
-
-
-    plt.subplot(222)
-    df72  =  bb[:] [ bb.팀=='NC' ]
-    x = years
-    y = df72.승률
-    
-    plt.plot( x, list(y), color='red' , marker='o'     ) 
-   # plt.xticks( years2 )
-    plt.title('NC Rate')
-
-    plt.subplot(223)
-    df73  =  bb[:] [ bb.팀=='Lotte' ]
-    x =  years
-    y = df73.승률
-    
-    plt.plot( x, list(y), color='red' , marker='o'     ) 
-    #plt.xticks( years2 )
-    plt.title('Lotte Rate')
-
-
-    plt.subplot(224)
-    df74  =  bb[:] [ bb.팀=='SK' ]
-    x =  years
-    y = df74.승률
-    
-    plt.plot( x, list(y), color='red' , marker='o'     ) 
-    #plt.xticks( years2 )
-    plt.title('SK rate')
-
-    st.pyplot(fig)
        
 
 with st.form(key ='Form1'):
@@ -168,7 +121,7 @@ if select_language =='금리가 집값에 영향을 미치는지 빠르게 파�
 
         
 elif select_language =='야구의 승률과 순위의 관계 빠르게 파악하기':
-    tab1, tab2, tab3 = st.tabs(["📈 Bar Chart", "📈  Chart", "🗃 Data"])
+    tab1, tab2 = st.tabs(["📈 Bar Chart", "🗃 Data"])
     
     with tab1:
         tab1.subheader("야구의 승률과 순위의 관계 빠르게 파악하기")
@@ -176,11 +129,9 @@ elif select_language =='야구의 승률과 순위의 관계 빠르게 파악하
         
     with tab2:
         tab2.subheader("A tab with the data")
-        baseball_line_chart()        
+        st.dataframe(bb)        
         
-    with tab3:
-        tab3.subheader("A tab with the data")
-        st.dataframe(bb)
+ 
   
 
  
