@@ -89,13 +89,13 @@ def bar_chart():
     
     y = df7.승률
     
+    fig = px.bar(df7, x='팀', y='승률' , color='승률', hover_data= ['승률','출루율'], labels={'승률':'한국 야구 승률 데이터'} , height=600)
+
     for   num ,   v    in   enumerate( y ):
         plt.text (  num -0.4  ,   v + 0.01 ,  v   )
 
-    fig = px.bar(df7, x='팀', y='승률' , color='승률', hover_data= ['승률','출루율'], labels={'승률':'한국 야구 승률 데이터'} , height=600)
-
-    plt.title( "year korea baseball winrate data", position=(0.5,1.1))
     st.plotly_chart(fig, use_container_width=True)
+    
     #st.dataframe(df7)
 
 st.set_page_config(layout="wide")      
