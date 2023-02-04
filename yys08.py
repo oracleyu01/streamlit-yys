@@ -76,11 +76,8 @@ def bar_chart():
     option2 = option
 
     st.write('You selected:', option)
-   
 
     df7  =  baseball[:] [ baseball.년도==option2 ]
-    x = df7.팀
-    y = df7.승률
     
     global bb
     bb = df7    
