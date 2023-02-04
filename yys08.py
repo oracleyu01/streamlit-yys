@@ -83,6 +83,8 @@ def bar_chart():
     bb = df7    
     
     fig, ax = plt.subplots(figsize=(12,8))
+    
+    st.set_page_config(layout="wide")  
 
     import plotly.express as px
 
