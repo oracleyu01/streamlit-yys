@@ -83,8 +83,7 @@ def bar_chart():
     bb = df7    
     
     fig, ax = plt.subplots(figsize=(12,8))
-    
-    st.set_page_config(layout="wide")  
+  
 
     import plotly.express as px
 
@@ -93,7 +92,8 @@ def bar_chart():
     plt.title( "year korea baseball winrate data", position=(0.5,1.1))
     st.plotly_chart(fig, use_container_width=True)
     #st.dataframe(df7)
-       
+
+st.set_page_config(layout="wide")      
 
 with st.form(key ='Form1'):
     with st.sidebar:
