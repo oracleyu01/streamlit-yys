@@ -85,15 +85,15 @@ def bar_chart():
     global bb
     bb = df7    
     
-    fig, ax = plt.subplots(figsize=(12,8))
+    fig2, ax = plt.subplots()
 
     import plotly.express as px
 
-    fig = px.bar(df7, x='팀', y='승률' , color='승률', hover_data= ['승률','출루율'],
+    fig2 = px.bar(df7, x='팀', y='승률' , color='승률', hover_data= ['승률','출루율'],
               labels={'승률':'한국 야구 승률 데이터'} , height=400)
 
     plt.title( "year korea baseball winrate data", position=(0.5,1.1))
-    st.pyplot(fig)
+    st.pyplot(fig2)
     #st.dataframe(df7)
     
        
