@@ -88,7 +88,7 @@ def bar_chart():
     
     y = df7.승률
     
-    fig = px.bar(df7, x='팀', y='승률' , color='승률', hover_data= ['승률','출루율'], labels={'승률':'한국 야구 승률 데이터'} , height=600)
+    fig = px.bar(df7, x='팀', y='승률' , color='승률', hover_data= ['승률','출루율','장타율'], labels={'승률':'한국 야구 승률 데이터'} , height=600)
 
     st.plotly_chart(fig, use_container_width=True)
     
