@@ -86,6 +86,11 @@ def bar_chart():
   
 
     import plotly.express as px
+    
+    y = df7.승률
+    
+    for   num ,   v    in   enumerate( y ):
+        plt.text (  num -0.4  ,   v + 0.01 ,  v   )
 
     fig = px.bar(df7, x='팀', y='승률' , color='승률', hover_data= ['승률','출루율'], labels={'승률':'한국 야구 승률 데이터'} , height=600)
 
