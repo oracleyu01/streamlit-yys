@@ -84,15 +84,11 @@ def bar_chart():
     
     fig, ax = plt.subplots(figsize=(12,8))
   
-
     import plotly.express as px
     
     y = df7.승률
     
     fig = px.bar(df7, x='팀', y='승률' , color='승률', hover_data= ['승률','출루율'], labels={'승률':'한국 야구 승률 데이터'} , height=600)
-
-    for   num ,   v    in   enumerate( y ):
-        plt.text (  num -0.4  ,   v + 0.01 ,  v   )
 
     st.plotly_chart(fig, use_container_width=True)
     
@@ -117,7 +113,6 @@ if select_language =='금리와 집값 데이터 고객 맞춤 데이터 시각�
         tab2.subheader("A tab with the data")
         st.dataframe(aa, 1000, 400)
   
-
         
 elif select_language =='한국 야구 데이터 고객 맞춤 데이터 시각화':
     tab1, tab2 = st.tabs(["📈 Bar Chart", "🗃 Data"])
@@ -130,7 +125,3 @@ elif select_language =='한국 야구 데이터 고객 맞춤 데이터 시각�
         tab2.subheader("A tab with the data")
         st.dataframe(bb)        
         
- 
-  
-
- 
