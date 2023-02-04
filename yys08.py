@@ -83,16 +83,14 @@ def bar_chart():
     y = df7.승률
     
     global bb
-    bb = df7
-    
+    bb = df7    
     
     fig, ax = plt.subplots(figsize=(12,8))
 
-    colors = ['C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7' ,'C8', 'C9', 'C10' ]
-    plt.bar(  x,  y,  color= colors, alpha=0.5 ) 
+    import plotly.express as px
 
-    for   num ,   v    in   enumerate( y ):
-        plt.text (  num -0.4  ,   v + 0.01 ,  v   )
+    fig = px.bar(df7, x='팀', y='승률' , color='승률', hover_data= ['승률','출루율'],
+              labels={'승률':'한국 야구 승률 데이터'} , height=400)
 
     plt.title( "year korea baseball winrate data", position=(0.5,1.1))
     st.pyplot(fig)
