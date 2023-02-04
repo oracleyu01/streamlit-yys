@@ -89,9 +89,8 @@ def bar_chart():
     fig = px.bar(df7, x='팀', y='승률' , color='승률', hover_data= ['승률','출루율'], labels={'승률':'한국 야구 승률 데이터'} , height=400)
 
     plt.title( "year korea baseball winrate data", position=(0.5,1.1))
-    st.pyplot(fig)
+    st.plotly_chart(fig, use_container_width=True)
     #st.dataframe(df7)
-    
        
 
 with st.form(key ='Form1'):
@@ -99,7 +98,6 @@ with st.form(key ='Form1'):
         
         select_language =  st.sidebar.radio('데이터 분석 결과', ('금리가 집값에 영향을 미치는지 빠르게 파악하기', '야구의 승률과 순위의 관계 빠르게 파악하기', '다른 데이터 분석'))
         
-
         
 if select_language =='금리가 집값에 영향을 미치는지 빠르게 파악하기':  
     tab1, tab2 = st.tabs(["📈 Chart", "🗃 Data"])
