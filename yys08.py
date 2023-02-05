@@ -57,7 +57,7 @@ def bar_chart():
     fig.update_traces(texttemplate='%{text:.2s}', textposition='outside')
     fig.update_layout(uniformtext_minsize=8, uniformtext_mode='hide')
     st.plotly_chart(fig, use_container_width=True)
-    st.dataframe(bb)  
+    st.dataframe(bb, 300, 400)  
 
 
 st.set_page_config(layout="wide")      
