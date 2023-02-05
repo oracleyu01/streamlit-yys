@@ -43,7 +43,7 @@ def bar_chart():
     
     df['category'] = [str(i) for i in df.index]
 
-    color_discrete_sequence = ['dodgerblue']*len(emp)
+    color_discrete_sequence = ['dodgerblue']*len(df)
     color_discrete_sequence[0] = 'gold'
     color_discrete_sequence[2] = 'gold'
 
