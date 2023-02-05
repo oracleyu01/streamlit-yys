@@ -50,7 +50,7 @@ def bar_chart():
 
     fig = px.bar(df, y='승률', x='팀', 
                  text='승률',
-                 hover_data= ['출루율','장타율'], title='한국 야구 데이터 분석',
+                 hover_data= ['출루율','장타율'], title='한국 야구팀 승률 분석',
                  color='category',
                  color_discrete_sequence=color_discrete_sequence )
 
