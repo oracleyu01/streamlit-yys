@@ -78,5 +78,5 @@ if select_language =='한국 야구 데이터 분석':
         
     with tab2:
         tab2.subheader("A tab with the data")
-        st.dataframe(bb)        
+        st.dataframe(bb, 300, 400)        
         
