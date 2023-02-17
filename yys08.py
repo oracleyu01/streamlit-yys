@@ -165,7 +165,6 @@ def word_chart():
 
     ## 3. 데이터 프레임 생성
     import pandas  as  pd
-    #df = pd.read_csv("/content/drive/MyDrive/data500/fruit_vegetable.csv", encoding = "utf-8")
     df = pd.read_csv("origin_pos.csv",  encoding = "utf-8")
     df.columns=['title', 'count'] 
     ## 4. 생성된 데이터 프레임을 딕셔너리로 변환
@@ -174,7 +173,7 @@ def word_chart():
     wc = df.set_index("title").to_dict()["count"]
 
     wordCloud = WordCloud(
-  #  font_path = "malgun.ttf", # 폰트 지정
+    font_path = "malgunsl.ttf", # 폰트 지정
     width = 1000, # 워드 클라우드의 너비 지정
     height = 800, # 워드클라우드의 높이 지정
     max_font_size=100, # 가장 빈도수가 높은 단어의 폰트 사이즈 지정
