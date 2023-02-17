@@ -139,7 +139,7 @@ def  emotion():
 
     origin_nag_df = pd.read_csv("origin_nag.csv", header=None)
     origin_nag_df.columns=['word2', 'cnt2'] 
-    origin_nag_df['순위2']=origin_nag_df['cnt'].rank(method='dense', ascending=False).astype(int)
+    origin_nag_df['순위2']=origin_nag_df['cnt2'].rank(method='dense', ascending=False).astype(int)
     a_nag = origin_nag_df[:].sort_values(by=['순위2']).head(20)   # 상위 20개만 출력
     
     #12. 긍정 데이터 프레임과 부정 데이터 프레임을 옆으로 붙이는 코드
