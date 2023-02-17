@@ -99,6 +99,9 @@ def  emotion(name):
     pos1.remove('^^')
     pos1.remove('이벤트')
     pos1.remove('어진')
+    pos1.append('맛있다')
+    pos1.append('언니')
+    
 
     #7. 원본 데이터에서 긍정단어가 얼마나 포함되었는지 확인하고 내리는 코드
 
@@ -123,6 +126,7 @@ def  emotion(name):
     neg1.remove(':)')
     neg1.remove('저는')
    # neg1.remove('물리')
+    neg1.append('맵다')
 
     #10. 원본 데이터에서 부정단어가 얼마나 포함되었는지 확인하고 내리는 코드
 
