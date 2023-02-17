@@ -62,7 +62,7 @@ st.set_page_config(layout="wide")
 with st.form(key ='Form1'):
     with st.sidebar:
         
-        select_language =  st.sidebar.radio('고객이 원하는 데이터를 분석하기 편하도록', ('한국 야구 데이터 분석', '다른 데이터 분석'))
+        select_language =  st.sidebar.radio('고객이 원하는 데이터를 분석하기 편하도록', ('한국 야구 데이터 분석', '긍정  분석'))
         
 
 #2. 워드 클라우드
@@ -235,7 +235,7 @@ if select_language =='한국 야구 데이터 분석':
         tab2.subheader("A tab with the data")
         st.dataframe(bb, 300, 400)        
         
-elif select_language=='다른 데이터 분석':
+elif select_language=='긍정 부정 분석':
     tab1, tab2, tab3 = st.tabs(["🗃 Data", "📈 긍정 Chart", "📈 부정 Chart"])
     
     with tab1:
@@ -248,6 +248,6 @@ elif select_language=='다른 데이터 분석':
         pos_word_chart()     
        
     with tab3:
-        tab3.subheader(" 단어 워드 클라우드")
+        tab3.subheader("부정 단어 워드 클라우드")
         neg_word_chart()                  
        
