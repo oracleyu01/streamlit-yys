@@ -153,9 +153,6 @@ def  emotion():
                                                 # 양옆으로 붙인다.
     
     return df_posneg.style.hide_index()
-
-
-emotion() 
               
         
 if select_language =='한국 야구 데이터 분석':
@@ -169,3 +166,10 @@ if select_language =='한국 야구 데이터 분석':
         tab2.subheader("A tab with the data")
         st.dataframe(bb, 300, 400)        
         
+elif select_language=='다른 데이터 분석':
+    tab1, tab2 = st.tabs(["📈 Bar Chart", "🗃 Data"])
+    
+    with tab1:
+        tab1.subheader("감정 데이터 분석")
+        emotion()
+       
