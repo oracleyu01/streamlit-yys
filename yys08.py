@@ -2,9 +2,6 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-
-
-
        
 url = "https://sports.news.naver.com/kbaseball/record/index?category=kbo&year="
 
@@ -171,5 +168,6 @@ elif select_language=='다른 데이터 분석':
     
     with tab1:
         tab1.subheader("감정 데이터 분석")
-        emotion()
+        e_df = emotion()
+        st.dataframe(e_df, 300, 400)    
        
