@@ -93,10 +93,10 @@ def  emotion():
     #5. 분석하고자 하는 텍스트에 나오는 긍정단어와 부정단어 저장할 csv 파일 생성 
     #f2 = open("origin_pos.csv", "w", encoding="utf8")
     #f3 = open("origin_neg.csv", "w", encoding="utf8")
-    global f2
-    global f3
     f2= {}
     f3= {}
+    global f2
+    global f3
 
     #6. 긍정단어에서 제외시키고 싶은 단어들을 제외시킵니다.
     pos1.remove('ㅎㅎ')
