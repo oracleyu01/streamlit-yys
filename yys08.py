@@ -187,7 +187,7 @@ def neg_word_chart():
     ## 3. 데이터 프레임 생성
     import pandas  as  pd
     
-     _, df, _  =  emotion() 
+    _, df, _  =  emotion() 
     df.columns=['title', 'count'] 
     ## 4. 생성된 데이터 프레임을 딕셔너리로 변환
     ##  wordcolud 함수에 데이터를 제공할 때는 데이터 프레임으로 줄 수 는 없고
