@@ -70,11 +70,11 @@ with st.form(key ='Form1'):
 def  emotion():
     
     uploaded_file = st.file_uploader("Choose a file")
-    bytes_data = uploaded_file.getvalue()
-    st.write(bytes_data)
+    #bytes_data = uploaded_file.getvalue()
+    st.write(uploaded_file)
     
     #1. 텍스트 파일 3개를 불러옵니다.
-    origin_text = open(bytes_data, encoding="utf8")
+    origin_text = open(uploaded_file, encoding="utf8")
     positive     = open("pos_pol_word.txt", encoding="utf8")
     negative    = open("neg_pol_word.txt", encoding="utf8" )
 
