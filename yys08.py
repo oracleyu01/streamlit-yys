@@ -161,6 +161,7 @@ def pos_word_chart():
     import pandas  as  pd
     global f2
     df =pd.DataFrame(f2)
+    st.write(df)
     df.columns=['title', 'count'] 
     ## 4. 생성된 데이터 프레임을 딕셔너리로 변환
     ##  wordcolud 함수에 데이터를 제공할 때는 데이터 프레임으로 줄 수 는 없고
