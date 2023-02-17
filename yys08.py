@@ -231,11 +231,17 @@ elif select_language=='긍정 부정 분석':
               
     with tab2:
         tab2.subheader("긍정 단어 워드 클라우드")
-        pos_word_chart()     
+        try:
+            pos_word_chart()     
+        except:
+            pass
        
     with tab3:
         tab3.subheader("부정 단어 워드 클라우드")
-        neg_word_chart()                  
+        try:
+            neg_word_chart() 
+        except:
+            pass
        
     with tab4:
         tab4.subheader("긍정단어와 부정단어 건수와 순위")
