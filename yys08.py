@@ -66,6 +66,8 @@ with st.form(key ='Form1'):
         
 
 #2. 워드 클라우드
+f2= {}
+f3= {}
 
 def  emotion():
     
@@ -93,8 +95,6 @@ def  emotion():
     #5. 분석하고자 하는 텍스트에 나오는 긍정단어와 부정단어 저장할 csv 파일 생성 
     #f2 = open("origin_pos.csv", "w", encoding="utf8")
     #f3 = open("origin_neg.csv", "w", encoding="utf8")
-    f2= {}
-    f3= {}
     global f2
     global f3
 
@@ -157,15 +157,9 @@ def pos_word_chart():
     # wordcoloud.py 안에 있는 WordCloud 함수를 불러와라
     from wordcloud import WordCloud
 
-
-    # 한글 안깨지게 하는 코드 
-  #  from matplotlib import font_manager, rc
-   # font = font_manager.FontProperties(fname="malgun.ttf").get_name()
-   # rc('font', family=font)
-
-
     ## 3. 데이터 프레임 생성
     import pandas  as  pd
+    global f2
     df =pd.DataFrame(f2)
     df.columns=['title', 'count'] 
     ## 4. 생성된 데이터 프레임을 딕셔너리로 변환
@@ -194,6 +188,7 @@ def neg_word_chart():
 
     ## 3. 데이터 프레임 생성
     import pandas  as  pd
+    global f3
     df =pd.DataFrame(f3)
     df.columns=['title', 'count'] 
     ## 4. 생성된 데이터 프레임을 딕셔너리로 변환
