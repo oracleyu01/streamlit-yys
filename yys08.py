@@ -242,8 +242,7 @@ elif select_language=='긍정 부정 분석':
         tab1.subheader("긍정단어와 부정단어 건수와 순위")
         try:      
             uploaded_file = st.file_uploader("분석할 텍스트 파일을 업로드 해주세요")   
-            bytes_data = uploaded_file.getvalue()
-            e_df = emotion(bytes_data)
+            e_df = emotion(uploaded_file)
             st.dataframe(e_df, 300, 400)   
         except:
             pass
