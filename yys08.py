@@ -70,7 +70,6 @@ with st.form(key ='Form1'):
 def  emotion():
     
     uploaded_file = st.file_uploader("Choose a file")
-    #bytes_data = uploaded_file.getvalue()
     st.write(uploaded_file.name)
     
     #1. 텍스트 파일 3개를 불러옵니다.
@@ -92,9 +91,10 @@ def  emotion():
     neg1 = list( filter( lambda  x : True  if len(x) > 1  else  False, neg ) )
 
     #5. 분석하고자 하는 텍스트에 나오는 긍정단어와 부정단어 저장할 csv 파일 생성 
-    f2 = open("origin_pos.csv", "w", encoding="utf8")
-    f3 = open("origin_neg.csv", "w", encoding="utf8")
-    
+    #f2 = open("origin_pos.csv", "w", encoding="utf8")
+    #f3 = open("origin_neg.csv", "w", encoding="utf8")
+    f2= {}
+    f3= {}
 
     #6. 긍정단어에서 제외시키고 싶은 단어들을 제외시킵니다.
     pos1.remove('ㅎㅎ')
@@ -109,16 +109,12 @@ def  emotion():
 
     for  i  in   pos1:
         if  i  in  origin:
-            f2.write( i + ',' + str( origin.count(i) ) + '\n' )
-            
-    f2.close()    
+            f2[i] = origin.count(i)
 
     #8. 위에서 생성한 csv 파일을 판다스 데이터 프레임으로 만들어서 출력하는 코드
     import  pandas  as  pd
-    
-    pd.set_option('display.max_rows', None ) # 결과 출력시 중간에 생략하지 않고 다 출력
 
-    origin_df = pd.read_csv("origin_pos.csv", header=None)
+    origin_df = pd.DataFrame(f2)
     origin_df.columns=['긍정단어', '긍정건수'] 
     origin_df['긍정순위']=origin_df['긍정건수'].rank(method='dense', ascending=False).astype(int)
     a_pos = origin_df[:].sort_values(by=['긍정순위']).head(20)   # 상위 20개만 출력
@@ -134,16 +130,13 @@ def  emotion():
 
     for  i  in  neg1:
         if  i  in  origin:
-            f3.write( i + ',' + str( origin.count(i) ) + '\n' )
-            
-    f3.close()    
+            f3[i] = origin.count(i)
+                
 
     #11. 위에서 생성한 csv 파일을 판다스 데이터 프레임으로 만들어서 출력하는 코드
     import  pandas  as  pd
-    
-    pd.set_option('display.max_rows', None ) # 결과 출력시 중간에 생략하지 않고 다 출력
 
-    origin_nag_df = pd.read_csv("origin_neg.csv", header=None)
+    origin_nag_df = pd.DataFrame(f3)
     origin_nag_df.columns=['부정단어', '부정건수'] 
     origin_nag_df['부정순위']=origin_nag_df['부정건수'].rank(method='dense', ascending=False).astype(int)
     a_nag = origin_nag_df[:].sort_values(by=['부정순위']).head(20)   # 상위 20개만 출력
