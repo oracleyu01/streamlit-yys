@@ -91,7 +91,7 @@ def  emotion():
 
     #5. 분석하고자 하는 텍스트에 나오는 긍정단어와 부정단어 저장할 csv 파일 생성 
     f2 = open("origin_pos.csv", "w", encoding="utf8")
-    f3 = open("origin_nag.csv", "w", encoding="utf8")
+    f3 = open("origin_neg.csv", "w", encoding="utf8")
     
 
     #6. 긍정단어에서 제외시키고 싶은 단어들을 제외시킵니다.
@@ -114,9 +114,9 @@ def  emotion():
     pd.set_option('display.max_rows', None ) # 결과 출력시 중간에 생략하지 않고 다 출력
 
     origin_df = pd.read_csv("origin_pos.csv", header=None)
-    origin_df.columns=['word', 'cnt'] 
-    origin_df['순위']=origin_df['cnt'].rank(method='dense', ascending=False).astype(int)
-    a_pos = origin_df[:].sort_values(by=['순위']).head(20)   # 상위 20개만 출력
+    origin_df.columns=['긍정단어', '긍정건수'] 
+    origin_df['긍정순위']=origin_df['긍정건수'].rank(method='dense', ascending=False).astype(int)
+    a_pos = origin_df[:].sort_values(by=['긍정순위']).head(20)   # 상위 20개만 출력
     
     #9. 부정단어에서 제외시키고 싶은 단어들을 제외시킵니다.
     neg1.remove(':D')
@@ -137,10 +137,10 @@ def  emotion():
     
     pd.set_option('display.max_rows', None ) # 결과 출력시 중간에 생략하지 않고 다 출력
 
-    origin_nag_df = pd.read_csv("origin_nag.csv", header=None)
-    origin_nag_df.columns=['word2', 'cnt2'] 
-    origin_nag_df['순위2']=origin_nag_df['cnt2'].rank(method='dense', ascending=False).astype(int)
-    a_nag = origin_nag_df[:].sort_values(by=['순위2']).head(20)   # 상위 20개만 출력
+    origin_nag_df = pd.read_csv("origin_neg.csv", header=None)
+    origin_nag_df.columns=['부정단어', '부정건수'] 
+    origin_nag_df['부정순위']=origin_nag_df['부정건수'].rank(method='dense', ascending=False).astype(int)
+    a_nag = origin_nag_df[:].sort_values(by=['부정순위']).head(20)   # 상위 20개만 출력
     
     #12. 긍정 데이터 프레임과 부정 데이터 프레임을 옆으로 붙이는 코드
     
@@ -151,7 +151,7 @@ def  emotion():
     
     return df_posneg.style.hide_index()
 
-def word_chart():
+def pos_word_chart():
     ##1. 워드 클라우드 생성을 위한 패키지
     # wordcoloud.py 안에 있는 WordCloud 함수를 불러와라
     from wordcloud import WordCloud
@@ -187,6 +187,42 @@ def word_chart():
     #plt.imshow(wordCloud)
     #plt.axis('off')
               
+def neg_word_chart():
+    ##1. 워드 클라우드 생성을 위한 패키지
+    # wordcoloud.py 안에 있는 WordCloud 함수를 불러와라
+    from wordcloud import WordCloud
+
+
+    # 한글 안깨지게 하는 코드 
+  #  from matplotlib import font_manager, rc
+   # font = font_manager.FontProperties(fname="malgun.ttf").get_name()
+   # rc('font', family=font)
+
+
+    ## 3. 데이터 프레임 생성
+    import pandas  as  pd
+    df = pd.read_csv("origin_neg.csv",  encoding = "utf-8")
+    df.columns=['title', 'count'] 
+    ## 4. 생성된 데이터 프레임을 딕셔너리로 변환
+    ##  wordcolud 함수에 데이터를 제공할 때는 데이터 프레임으로 줄 수 는 없고
+    # 딕셔너리 형태로 제공 해야 합니다. 
+    wc = df.set_index("title").to_dict()["count"]
+
+    wordCloud = WordCloud(
+    font_path = "malgunsl.ttf", # 폰트 지정
+    width = 1000, # 워드 클라우드의 너비 지정
+    height = 800, # 워드클라우드의 높이 지정
+    max_font_size=100, # 가장 빈도수가 높은 단어의 폰트 사이즈 지정
+    background_color = 'white' # 배경색 지정
+    ).generate_from_frequencies(wc) # 워드 클라우드 빈도수 지정
+
+    fig, ax = plt.subplots(figsize = (12, 8))
+    ax.imshow(wordCloud)
+    plt.axis('off')
+    st.pyplot(fig)
+    #plt.imshow(wordCloud)
+    #plt.axis('off')                  
+              
         
 if select_language =='한국 야구 데이터 분석':
     tab1, tab2 = st.tabs(["📈 Bar Chart", "🗃 Data"])
@@ -200,15 +236,18 @@ if select_language =='한국 야구 데이터 분석':
         st.dataframe(bb, 300, 400)        
         
 elif select_language=='다른 데이터 분석':
-    tab1, tab2 = st.tabs(["📈 Bar Chart", "🗃 Data"])
+    tab1, tab2, tab3 = st.tabs(["🗃 Data", "📈 긍정 Chart", "📈 부정 Chart"])
     
     with tab1:
-        tab1.subheader("감정 데이터 분석")
-        word_chart()              
-     
+        tab1.subheader("긍정단어와 부정단어 건수와 순위")
+        e_df = emotion()
+        st.dataframe(e_df, 300, 400)             
               
     with tab2:
-        tab2.subheader("A tab with the data")
-        e_df = emotion()
-        st.dataframe(e_df, 300, 400)                    
+        tab2.subheader("긍정 단어 워드 클라우드")
+        pos_word_chart()     
+       
+    with tab3:
+        tab3.subheader(" 단어 워드 클라우드")
+        neg_word_chart()                  
        
