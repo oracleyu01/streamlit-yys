@@ -256,5 +256,8 @@ elif select_language=='긍정 부정 분석':
        
     with tab4:
         tab4.subheader("긍정단어와 부정단어 건수와 순위")
-        st.dataframe(e_df, 300, 400)   
+        try:
+            st.dataframe(e_df, 300, 400)   
+        except:
+            pass
        
