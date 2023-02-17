@@ -93,8 +93,6 @@ def  emotion():
     #5. 분석하고자 하는 텍스트에 나오는 긍정단어와 부정단어 저장할 csv 파일 생성 
     #f2 = open("origin_pos.csv", "w", encoding="utf8")
     #f3 = open("origin_neg.csv", "w", encoding="utf8")
-    global f2
-    global f3
     f2= {}
     f3= {}
 
@@ -150,7 +148,7 @@ def  emotion():
     df_posneg=pd.concat([a_pos,a_nag],axis=1)   # 인덱스 없는 상태에서 그냥 그대로
                                                 # 양옆으로 붙인다.
     
-    return df_posneg.style.hide_index()
+    return origin_pos_df, origin_nag_df, df_posneg.style.hide_index()
 
 def pos_word_chart():
     ##1. 워드 클라우드 생성을 위한 패키지
@@ -159,8 +157,8 @@ def pos_word_chart():
 
     ## 3. 데이터 프레임 생성
     import pandas  as  pd
-    global f2
-    df =pd.DataFrame(f2)
+    
+    df, _ ,_  =  emotion() 
     df.columns=['title', 'count'] 
     ## 4. 생성된 데이터 프레임을 딕셔너리로 변환
     ##  wordcolud 함수에 데이터를 제공할 때는 데이터 프레임으로 줄 수 는 없고
@@ -188,8 +186,8 @@ def neg_word_chart():
 
     ## 3. 데이터 프레임 생성
     import pandas  as  pd
-    global f3
-    df =pd.DataFrame(f3)
+    
+     _, df, _  =  emotion() 
     df.columns=['title', 'count'] 
     ## 4. 생성된 데이터 프레임을 딕셔너리로 변환
     ##  wordcolud 함수에 데이터를 제공할 때는 데이터 프레임으로 줄 수 는 없고
@@ -227,7 +225,7 @@ elif select_language=='긍정 부정 분석':
     with tab1:
         tab1.subheader("긍정 부정 감성 분석")
         try:
-            e_df = emotion()    
+            _,_, e_df = emotion()    
         except:
             pass
               
