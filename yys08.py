@@ -181,8 +181,12 @@ def word_chart():
     background_color = 'white' # 배경색 지정
     ).generate_from_frequencies(wc) # 워드 클라우드 빈도수 지정
 
-    plt.imshow(wordCloud)
+    fig, ax = plt.subplots(figsize = (12, 8))
+    ax.imshow(wordCloud)
     plt.axis('off')
+    st.pyplot(fig)
+    #plt.imshow(wordCloud)
+    #plt.axis('off')
               
         
 if select_language =='한국 야구 데이터 분석':
