@@ -236,17 +236,12 @@ if select_language =='한국 야구 데이터 분석':
         st.dataframe(bb, 300, 400)        
         
 elif select_language=='긍정 부정 분석':
-    tab1, tab2, tab3 = st.tabs(["🗃 Data", "📈 긍정 Chart", "📈 부정 Chart"])
+    tab1, tab2, tab3, tab4 = st.tabs(["🗃 Data", "📈 긍정 Chart", "📈 부정 Chart" ,"긍정부정 단어순위"])
     
     with tab1:
-        tab1.subheader("긍정단어와 부정단어 건수와 순위")
+        tab1.subheader("긍정 부정 감성 분석")
         uploaded_file = st.file_uploader("분석할 텍스트 파일을 업로드 해주세요")   
-        try:
-            e_df = emotion(uploaded_file)
-            st.dataframe(e_df, 300, 400)        
-        except:
-            pass
- 
+        e_df = emotion(uploaded_file)    
               
     with tab2:
         tab2.subheader("긍정 단어 워드 클라우드")
@@ -255,4 +250,8 @@ elif select_language=='긍정 부정 분석':
     with tab3:
         tab3.subheader("부정 단어 워드 클라우드")
         neg_word_chart()                  
+       
+    with tab4:
+        tab4.subheader("긍정단어와 부정단어 건수와 순위")
+        st.dataframe(e_df, 300, 400)   
        
