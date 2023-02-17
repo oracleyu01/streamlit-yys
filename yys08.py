@@ -245,7 +245,7 @@ elif select_language=='긍정 부정 분석':
     with tab1:
         tab1.subheader("긍정 부정 감성 분석")
         try:
-            emotion()    
+            e_df = emotion()    
         except:
             pass
               
