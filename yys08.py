@@ -168,6 +168,10 @@ elif select_language=='다른 데이터 분석':
     
     with tab1:
         tab1.subheader("감정 데이터 분석")
+     
+              
+    with tab2:
+        tab2.subheader("A tab with the data")
         e_df = emotion()
-        st.dataframe(e_df, 300, 400)    
+        st.dataframe(e_df, 300, 400)                    
        
