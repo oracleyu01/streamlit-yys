@@ -150,6 +150,39 @@ def  emotion():
                                                 # 양옆으로 붙인다.
     
     return df_posneg.style.hide_index()
+
+def word_chart():
+    ##1. 워드 클라우드 생성을 위한 패키지
+    # wordcoloud.py 안에 있는 WordCloud 함수를 불러와라
+    from wordcloud import WordCloud
+
+
+    # 한글 안깨지게 하는 코드 
+  #  from matplotlib import font_manager, rc
+   # font = font_manager.FontProperties(fname="malgun.ttf").get_name()
+   # rc('font', family=font)
+
+
+    ## 3. 데이터 프레임 생성
+    import pandas  as  pd
+    #df = pd.read_csv("/content/drive/MyDrive/data500/fruit_vegetable.csv", encoding = "utf-8")
+    df = pd.read_csv("origin_pos.csv",  encoding = "utf-8")
+    df.columns=['title', 'count'] 
+    ## 4. 생성된 데이터 프레임을 딕셔너리로 변환
+    ##  wordcolud 함수에 데이터를 제공할 때는 데이터 프레임으로 줄 수 는 없고
+    # 딕셔너리 형태로 제공 해야 합니다. 
+    wc = df.set_index("title").to_dict()["count"]
+
+    wordCloud = WordCloud(
+  #  font_path = "malgun.ttf", # 폰트 지정
+    width = 1000, # 워드 클라우드의 너비 지정
+    height = 800, # 워드클라우드의 높이 지정
+    max_font_size=100, # 가장 빈도수가 높은 단어의 폰트 사이즈 지정
+    background_color = 'white' # 배경색 지정
+    ).generate_from_frequencies(wc) # 워드 클라우드 빈도수 지정
+
+    plt.imshow(wordCloud)
+    plt.axis('off')
               
         
 if select_language =='한국 야구 데이터 분석':
@@ -168,6 +201,7 @@ elif select_language=='다른 데이터 분석':
     
     with tab1:
         tab1.subheader("감정 데이터 분석")
+        word_chart()              
      
               
     with tab2:
