@@ -67,12 +67,12 @@ with st.form(key ='Form1'):
 
 #2. 워드 클라우드
 
-def  emotion(name):
+def  emotion():
     
-   
+    uploaded_file = st.file_uploader("분석할 텍스트 파일을 업로드 해주세요")  
     
     #1. 텍스트 파일 3개를 불러옵니다.
-    origin_text = open(name, encoding="utf8")
+    origin_text = open(uploaded_file, encoding="utf8")
     positive     = open("pos_pol_word.txt", encoding="utf8")
     negative    = open("neg_pol_word.txt", encoding="utf8" )
 
@@ -244,9 +244,8 @@ elif select_language=='긍정 부정 분석':
     
     with tab1:
         tab1.subheader("긍정 부정 감성 분석")
-        uploaded_file = st.file_uploader("분석할 텍스트 파일을 업로드 해주세요")  
         try:
-            e_df = emotion(uploaded_file)    
+            emotion()    
         except:
             pass
               
