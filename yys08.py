@@ -245,6 +245,7 @@ elif select_language=='긍정 부정 분석':
             bytes_data = uploaded_file.read()
             e_df = emotion(bytes_data)
             st.dataframe(e_df, 300, 400)   
+            st.write(bytes_data)              
         except:
             pass
               
