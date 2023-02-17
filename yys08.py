@@ -114,10 +114,10 @@ def  emotion():
     #8. 위에서 생성한 csv 파일을 판다스 데이터 프레임으로 만들어서 출력하는 코드
     import  pandas  as  pd
 
-    origin_df = pd.DataFrame(f2)
-    origin_df.columns=['긍정단어', '긍정건수'] 
-    origin_df['긍정순위']=origin_df['긍정건수'].rank(method='dense', ascending=False).astype(int)
-    a_pos = origin_df[:].sort_values(by=['긍정순위']).head(20)   # 상위 20개만 출력
+    origin_pos_df = pd.DataFrame(f2)
+    origin_pos_df.columns=['긍정단어', '긍정건수'] 
+    origin_pos_df['긍정순위']=origin_df['긍정건수'].rank(method='dense', ascending=False).astype(int)
+    a_pos = origin_pos_df[:].sort_values(by=['긍정순위']).head(20)   # 상위 20개만 출력
     
     #9. 부정단어에서 제외시키고 싶은 단어들을 제외시킵니다.
     neg1.remove(':D')
@@ -164,7 +164,7 @@ def pos_word_chart():
 
     ## 3. 데이터 프레임 생성
     import pandas  as  pd
-    df = pd.read_csv("origin_pos.csv",  encoding = "utf-8")
+    df = origin_pos_df
     df.columns=['title', 'count'] 
     ## 4. 생성된 데이터 프레임을 딕셔너리로 변환
     ##  wordcolud 함수에 데이터를 제공할 때는 데이터 프레임으로 줄 수 는 없고
@@ -183,24 +183,16 @@ def pos_word_chart():
     ax.imshow(wordCloud)
     plt.axis('off')
     st.pyplot(fig)
-    #plt.imshow(wordCloud)
-    #plt.axis('off')
-              
+
 def neg_word_chart():
     ##1. 워드 클라우드 생성을 위한 패키지
     # wordcoloud.py 안에 있는 WordCloud 함수를 불러와라
     from wordcloud import WordCloud
 
 
-    # 한글 안깨지게 하는 코드 
-  #  from matplotlib import font_manager, rc
-   # font = font_manager.FontProperties(fname="malgun.ttf").get_name()
-   # rc('font', family=font)
-
-
     ## 3. 데이터 프레임 생성
     import pandas  as  pd
-    df = pd.read_csv("origin_neg.csv",  encoding = "utf-8")
+    df =origin_nag_df
     df.columns=['title', 'count'] 
     ## 4. 생성된 데이터 프레임을 딕셔너리로 변환
     ##  wordcolud 함수에 데이터를 제공할 때는 데이터 프레임으로 줄 수 는 없고
@@ -219,9 +211,7 @@ def neg_word_chart():
     ax.imshow(wordCloud)
     plt.axis('off')
     st.pyplot(fig)
-    #plt.imshow(wordCloud)
-    #plt.axis('off')                  
-              
+ 
         
 if select_language =='한국 야구 데이터 분석':
     tab1, tab2 = st.tabs(["📈 Bar Chart", "🗃 Data"])
