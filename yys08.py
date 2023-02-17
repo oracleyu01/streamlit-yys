@@ -240,8 +240,11 @@ elif select_language=='긍정 부정 분석':
     
     with tab1:
         tab1.subheader("긍정 부정 감성 분석")
-        uploaded_file = st.file_uploader("분석할 텍스트 파일을 업로드 해주세요")   
-        e_df = emotion(uploaded_file)    
+        uploaded_file = st.file_uploader("분석할 텍스트 파일을 업로드 해주세요")  
+        try:
+            e_df = emotion(uploaded_file)    
+        except:
+            pass
               
     with tab2:
         tab2.subheader("긍정 단어 워드 클라우드")
