@@ -62,7 +62,7 @@ st.set_page_config(layout="wide")
 with st.form(key ='Form1'):
     with st.sidebar:
         
-        select_language =  st.sidebar.radio('고객이 원하는 데이터를 분석하기 편하도록', ('한국 야구 데이터 분석', '긍정  분석'))
+        select_language =  st.sidebar.radio('고객이 원하는 데이터를 분석하기 편하도록', ('한국 야구 데이터 분석', '긍정 부정 분석'))
         
 
 #2. 워드 클라우드
