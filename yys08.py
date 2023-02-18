@@ -68,6 +68,9 @@ with st.form(key ='Form1'):
 #2. 워드 클라우드
 
 def  emotion():
+    from .session_state import get_session_state
+    state = get_session_state()
+
     uploaded_file = st.file_uploader("Choose a file")
     
     #1. 텍스트 파일 3개를 불러옵니다.
@@ -146,7 +149,8 @@ def  emotion():
     a_nag.reset_index(drop=True, inplace=True)  # a_nag 데이터 프레임의 인덱스 없앰
     df_posneg=pd.concat([a_pos,a_nag],axis=1)   # 인덱스 없는 상태에서 그냥 그대로
                                                 # 양옆으로 붙인다.
-    
+    state.sync()
+
     return origin_pos_df, origin_nag_df, df_posneg.style.hide_index()
 
 
