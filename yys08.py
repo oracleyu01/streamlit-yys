@@ -230,6 +230,7 @@ elif select_language=='긍정 부정 분석':
     with tab3:
         tab3.subheader("부정 단어 워드 클라우드")
         try:
+            _,n_df,_ = emotion()    
             nag_word_chart(n_df)
         except:
             pass
