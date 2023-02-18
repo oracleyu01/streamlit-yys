@@ -69,13 +69,11 @@ with st.form(key ='Form1'):
 
 def  emotion():
     
-    uploaded_file = st.file_uploader("Choose a file")
-    st.write(uploaded_file.name)
     
     #1. 텍스트 파일 3개를 불러옵니다.
-    origin_text = open(uploaded_file.name, encoding="utf8")
-    positive     = open("pos_pol_word.txt", encoding="utf8")
-    negative    = open("neg_pol_word.txt", encoding="utf8" )
+    origin_text = open('/content/drive/MyDrive/data500/bomot3.txt', encoding="utf8")
+    positive     = open("/content/drive/MyDrive/data500/pos_pol_word.txt", encoding="utf8")
+    negative    = open("/content/drive/MyDrive/data500/neg_pol_word.txt", encoding="utf8" )
 
     #2. 위의 텍스트 파일 3개를 엔터로 구분해서 변수에 담습니다.
     origin = origin_text.read()    # origin_text 를 문자형 변수 origin 에 담는다
@@ -90,11 +88,13 @@ def  emotion():
     pos1 = list( filter( lambda  x : True  if len(x) > 1  else  False, pos ) )
     neg1 = list( filter( lambda  x : True  if len(x) > 1  else  False, neg ) )
 
-    #5. 분석하고자 하는 텍스트에 나오는 긍정단어와 부정단어 저장할 csv 파일 생성 
-    #f2 = open("origin_pos.csv", "w", encoding="utf8")
-    #f3 = open("origin_neg.csv", "w", encoding="utf8")
-    f2= {}
-    f3= {}
+    #5. 분석하고자 하는 텍스트에 나오는 긍정단어와 부정단어 딕셔너리
+    pos_dict = {}
+    neg_dict = {}
+    pos_dict['긍정단어'] = []
+    pos_dict['긍정건수'] =[]
+    neg_dict['부정단어'] = []
+    neg_dict['부정건수'] =[]
 
     #6. 긍정단어에서 제외시키고 싶은 단어들을 제외시킵니다.
     pos1.remove('ㅎㅎ')
@@ -104,40 +104,39 @@ def  emotion():
     pos1.append('맛있다')
     pos1.append('언니')
     
-
     #7. 원본 데이터에서 긍정단어가 얼마나 포함되었는지 확인하고 내리는 코드
 
-    for  i  in   pos1:
-        if  i  in  origin:
-            f2[i] = origin.count(i)
+    for i in pos1:
+        if i in origin:
+            pos_dict['긍정단어'].append(i)
+            pos_dict['긍정건수'].append(origin.count(i))
 
     #8. 위에서 생성한 csv 파일을 판다스 데이터 프레임으로 만들어서 출력하는 코드
     import  pandas  as  pd
 
-    origin_pos_df = pd.DataFrame(f2)
-    origin_pos_df.columns=['긍정단어', '긍정건수'] 
-    origin_pos_df['긍정순위']=origin_df['긍정건수'].rank(method='dense', ascending=False).astype(int)
+    origin_pos_df = pd.DataFrame(pos_dict)
+    #origin_pos_df.columns=['긍정단어', '긍정건수'] 
+    origin_pos_df['긍정순위']=origin_pos_df['긍정건수'].rank(method='dense', ascending=False).astype(int)
     a_pos = origin_pos_df[:].sort_values(by=['긍정순위']).head(20)   # 상위 20개만 출력
     
     #9. 부정단어에서 제외시키고 싶은 단어들을 제외시킵니다.
     neg1.remove(':D')
     neg1.remove(':)')
     neg1.remove('저는')
-   # neg1.remove('물리')
     neg1.append('맵다')
 
     #10. 원본 데이터에서 부정단어가 얼마나 포함되었는지 확인하고 내리는 코드
 
-    for  i  in  neg1:
-        if  i  in  origin:
-            f3[i] = origin.count(i)
-                
+    for i in neg1:
+        if i in origin:
+            neg_dict['부정단어'].append(i)
+            neg_dict['부정건수'].append(origin.count(i))
+
 
     #11. 위에서 생성한 csv 파일을 판다스 데이터 프레임으로 만들어서 출력하는 코드
     import  pandas  as  pd
 
-    origin_nag_df = pd.DataFrame(f3)
-    origin_nag_df.columns=['부정단어', '부정건수'] 
+    origin_nag_df = pd.DataFrame(neg_dict)
     origin_nag_df['부정순위']=origin_nag_df['부정건수'].rank(method='dense', ascending=False).astype(int)
     a_nag = origin_nag_df[:].sort_values(by=['부정순위']).head(20)   # 상위 20개만 출력
     
@@ -149,6 +148,7 @@ def  emotion():
                                                 # 양옆으로 붙인다.
     
     return origin_pos_df, origin_nag_df, df_posneg.style.hide_index()
+
 
 def pos_word_chart():
     ##1. 워드 클라우드 생성을 위한 패키지
