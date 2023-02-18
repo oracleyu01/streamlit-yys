@@ -149,6 +149,9 @@ def  emotion():
            a_nag.reset_index(drop=True, inplace=True)  # a_nag 데이터 프레임의 인덱스 없앰
            df_posneg=pd.concat([a_pos,a_nag],axis=1)   # 인덱스 없는 상태에서 그냥 그대로
                                                        # 양옆으로 붙인다.
+              
+           file_uploader.clear()
+       
     origin_text.close()
     positive.close()
     negative.close()
