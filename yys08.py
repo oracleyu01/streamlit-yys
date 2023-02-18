@@ -159,11 +159,11 @@ def pos_word_chart():
     import pandas  as  pd
     
     df, _ ,_  =  emotion() 
-    df.columns=['title', 'count'] 
+
     ## 4. 생성된 데이터 프레임을 딕셔너리로 변환
     ##  wordcolud 함수에 데이터를 제공할 때는 데이터 프레임으로 줄 수 는 없고
     # 딕셔너리 형태로 제공 해야 합니다. 
-    wc = df.set_index("title").to_dict()["count"]
+    wc = df.set_index("긍정단어").to_dict()["긍정건수"]
 
     wordCloud = WordCloud(
     font_path = "malgunsl.ttf", # 폰트 지정
@@ -188,11 +188,11 @@ def neg_word_chart():
     import pandas  as  pd
     
     _, df, _  =  emotion() 
-    df.columns=['title', 'count'] 
+
     ## 4. 생성된 데이터 프레임을 딕셔너리로 변환
     ##  wordcolud 함수에 데이터를 제공할 때는 데이터 프레임으로 줄 수 는 없고
     # 딕셔너리 형태로 제공 해야 합니다. 
-    wc = df.set_index("title").to_dict()["count"]
+    wc = df.set_index("부정단어").to_dict()["부정건수"]
 
     wordCloud = WordCloud(
     font_path = "malgunsl.ttf", # 폰트 지정
