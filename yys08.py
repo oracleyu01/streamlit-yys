@@ -154,7 +154,8 @@ def pos_word_chart(p_df):
     ##1. 워드 클라우드 생성을 위한 패키지
     # wordcoloud.py 안에 있는 WordCloud 함수를 불러와라
     from wordcloud import WordCloud
-
+    import matplotlib.pyplot as plt
+       
     ## 4. 생성된 데이터 프레임을 딕셔너리로 변환
     ##  wordcolud 함수에 데이터를 제공할 때는 데이터 프레임으로 줄 수 는 없고
     # 딕셔너리 형태로 제공 해야 합니다. 
@@ -177,6 +178,7 @@ def neg_word_chart(n_df):
     ##1. 워드 클라우드 생성을 위한 패키지
     # wordcoloud.py 안에 있는 WordCloud 함수를 불러와라
     from wordcloud import WordCloud
+    import matplotlib.pyplot as plt
 
     ## 4. 생성된 데이터 프레임을 딕셔너리로 변환
     ##  wordcolud 함수에 데이터를 제공할 때는 데이터 프레임으로 줄 수 는 없고
