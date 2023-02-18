@@ -77,7 +77,7 @@ def  emotion():
            origin_text = open(uploaded_file.name, encoding="utf8")
            positive     = open("pos_pol_word.txt", encoding="utf8")
            negative    = open("neg_pol_word.txt", encoding="utf8" )
-           uploaded_file.clear()
+           st.write("파일 업로드 완료")
 
            #2. 위의 텍스트 파일 3개를 엔터로 구분해서 변수에 담습니다.
            origin = origin_text.read()    # origin_text 를 문자형 변수 origin 에 담는다
@@ -152,7 +152,7 @@ def  emotion():
                                                        # 양옆으로 붙인다.
               
            
-       
+           uploaded_file.
     return origin_pos_df, origin_nag_df, df_posneg.style.hide_index()
 
 
