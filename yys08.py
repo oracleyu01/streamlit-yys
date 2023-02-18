@@ -67,9 +67,10 @@ with st.form(key ='Form1'):
 
 #2. 워드 클라우드
 
+from .session_state import get_session_state
+state = get_session_state()
+
 def  emotion():
-    from .session_state import get_session_state
-    state = get_session_state()
 
     uploaded_file = st.file_uploader("Choose a file")
     
