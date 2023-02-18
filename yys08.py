@@ -152,9 +152,6 @@ def  emotion():
               
            file_uploader.clear()
        
-    origin_text.close()
-    positive.close()
-    negative.close()
     return origin_pos_df, origin_nag_df, df_posneg.style.hide_index()
 
 
