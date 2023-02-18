@@ -150,15 +150,10 @@ def  emotion():
     return origin_pos_df, origin_nag_df, df_posneg.style.hide_index()
 
 
-def pos_word_chart():
+def pos_word_chart(df):
     ##1. 워드 클라우드 생성을 위한 패키지
     # wordcoloud.py 안에 있는 WordCloud 함수를 불러와라
     from wordcloud import WordCloud
-
-    ## 3. 데이터 프레임 생성
-    import pandas  as  pd
-    
-    df, _ ,_  =  emotion() 
 
     ## 4. 생성된 데이터 프레임을 딕셔너리로 변환
     ##  wordcolud 함수에 데이터를 제공할 때는 데이터 프레임으로 줄 수 는 없고
@@ -178,16 +173,10 @@ def pos_word_chart():
     plt.axis('off')
     st.pyplot(fig)
 
-def neg_word_chart():
+def neg_word_chart(df):
     ##1. 워드 클라우드 생성을 위한 패키지
     # wordcoloud.py 안에 있는 WordCloud 함수를 불러와라
     from wordcloud import WordCloud
-
-
-    ## 3. 데이터 프레임 생성
-    import pandas  as  pd
-    
-    _, df, _  =  emotion() 
 
     ## 4. 생성된 데이터 프레임을 딕셔너리로 변환
     ##  wordcolud 함수에 데이터를 제공할 때는 데이터 프레임으로 줄 수 는 없고
@@ -225,22 +214,22 @@ elif select_language=='긍정 부정 분석':
     with tab1:
         tab1.subheader("긍정 부정 감성 분석")
         try:
-            _,_, e_df = emotion()    
+            p_df,n_df, all_df = emotion()    
         except:
             pass
               
     with tab2:
         tab2.subheader("긍정 단어 워드 클라우드")
-        pos_word_chart()
+        pos_word_chart(p_df)
        
     with tab3:
         tab3.subheader("부정 단어 워드 클라우드")
-        nag_word_chart()
+        nag_word_chart(n_df)
    
     with tab4:
         tab4.subheader("긍정단어와 부정단어 건수와 순위")
         try:
-            st.dataframe(e_df, 300, 400)   
+            st.dataframe(all_df, 300, 400)   
         except:
             pass
        
