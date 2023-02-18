@@ -72,7 +72,7 @@ def  emotion():
 
     uploaded_file = st.file_uploader("Choose a file")
     if uploaded_file: 
-    
+           st.write(uploaded_file)
            #1. 텍스트 파일 3개를 불러옵니다.
            origin_text = open(uploaded_file.name, encoding="utf8")
            positive     = open("pos_pol_word.txt", encoding="utf8")
