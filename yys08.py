@@ -151,6 +151,9 @@ def  emotion():
                                                 # 양옆으로 붙인다.
 
     uploaded_file = None
+    origin_text.close()
+    positive.close()
+    negative.close()
     return origin_pos_df, origin_nag_df, df_posneg.style.hide_index()
 
 
