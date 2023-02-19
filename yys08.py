@@ -69,91 +69,88 @@ with st.form(key ='Form1'):
 
 
 def  emotion():
-
-    uploaded_file = st.file_uploader("Choose a file")
-    if uploaded_file is not None:
         
-           #1. 텍스트 파일 3개를 불러옵니다.
-           origin_text = open(uploaded_file.name, encoding="utf8")
-           positive     = open("pos_pol_word.txt", encoding="utf8")
-           negative    = open("neg_pol_word.txt", encoding="utf8" )
-           st.write("파일 업로드 완료")
+    uploaded_file = st.file_uploader("Choose a file")
+     
+    #1. 텍스트 파일 3개를 불러옵니다.
+    origin_text = open(uploaded_file.name, encoding="utf8")
+    positive     = open("pos_pol_word.txt", encoding="utf8")
+    negative    = open("neg_pol_word.txt", encoding="utf8" )
+    st.write("파일 업로드 완료")
 
-           #2. 위의 텍스트 파일 3개를 엔터로 구분해서 변수에 담습니다.
-           origin = origin_text.read()    # origin_text 를 문자형 변수 origin 에 담는다
-           pos =  positive.read().split('\n')  # 긍정단어를 엔터로 구분해서 리스트로 구성
-           neg =  negative.read().split('\n') # 부정단어를 엔터로 구분해서 리스트로 구성
+    #2. 위의 텍스트 파일 3개를 엔터로 구분해서 변수에 담습니다.
+    origin = origin_text.read()    # origin_text 를 문자형 변수 origin 에 담는다
+    pos =  positive.read().split('\n')  # 긍정단어를 엔터로 구분해서 리스트로 구성
+    neg =  negative.read().split('\n') # 부정단어를 엔터로 구분해서 리스트로 구성
 
-           #3. pos 와 neg 리스트에서 결측치를 제거합니다.
-           pos = list( filter( lambda  x : x, pos ) )
-           neg = list( filter( lambda x : x, neg ) )
+    #3. pos 와 neg 리스트에서 결측치를 제거합니다.
+    pos = list( filter( lambda  x : x, pos ) )
+    neg = list( filter( lambda x : x, neg ) )
 
-           #4. 단어 한자리는 삭제
-           pos1 = list( filter( lambda  x : True  if len(x) > 1  else  False, pos ) )
-           neg1 = list( filter( lambda  x : True  if len(x) > 1  else  False, neg ) )
+    #4. 단어 한자리는 삭제
+    pos1 = list( filter( lambda  x : True  if len(x) > 1  else  False, pos ) )
+    neg1 = list( filter( lambda  x : True  if len(x) > 1  else  False, neg ) )
 
-           #5. 분석하고자 하는 텍스트에 나오는 긍정단어와 부정단어 딕셔너리
-           pos_dict = {}
-           neg_dict = {}
-           pos_dict['긍정단어'] = []
-           pos_dict['긍정건수'] =[]
-           neg_dict['부정단어'] = []
-           neg_dict['부정건수'] =[]
+    #5. 분석하고자 하는 텍스트에 나오는 긍정단어와 부정단어 딕셔너리
+    pos_dict = {}
+    neg_dict = {}
+    pos_dict['긍정단어'] = []
+    pos_dict['긍정건수'] =[]
+    neg_dict['부정단어'] = []
+    neg_dict['부정건수'] =[]
 
-           #6. 긍정단어에서 제외시키고 싶은 단어들을 제외시킵니다.
-           pos1.remove('ㅎㅎ')
-           pos1.remove('^^')
-           pos1.remove('이벤트')
-           pos1.remove('어진')
-           pos1.append('맛있다')
-           pos1.append('언니')
+    #6. 긍정단어에서 제외시키고 싶은 단어들을 제외시킵니다.
+    pos1.remove('ㅎㅎ')
+    pos1.remove('^^')
+    pos1.remove('이벤트')
+    pos1.remove('어진')
+    pos1.append('맛있다')
+    pos1.append('언니')
 
-           #7. 원본 데이터에서 긍정단어가 얼마나 포함되었는지 확인하고 내리는 코드
+    #7. 원본 데이터에서 긍정단어가 얼마나 포함되었는지 확인하고 내리는 코드
 
-           for i in pos1:
-               if i in origin:
-                   pos_dict['긍정단어'].append(i)
-                   pos_dict['긍정건수'].append(origin.count(i))
+    for i in pos1:
+        if i in origin:
+            pos_dict['긍정단어'].append(i)
+            pos_dict['긍정건수'].append(origin.count(i))
 
-           #8. 위에서 생성한 csv 파일을 판다스 데이터 프레임으로 만들어서 출력하는 코드
-           import  pandas  as  pd
+    #8. 위에서 생성한 csv 파일을 판다스 데이터 프레임으로 만들어서 출력하는 코드
+    import  pandas  as  pd
 
-           origin_pos_df = pd.DataFrame(pos_dict)
-           #origin_pos_df.columns=['긍정단어', '긍정건수'] 
-           origin_pos_df['긍정순위']=origin_pos_df['긍정건수'].rank(method='dense', ascending=False).astype(int)
-           a_pos = origin_pos_df[:].sort_values(by=['긍정순위']).head(20)   # 상위 20개만 출력
+    origin_pos_df = pd.DataFrame(pos_dict)
+    #origin_pos_df.columns=['긍정단어', '긍정건수'] 
+    origin_pos_df['긍정순위']=origin_pos_df['긍정건수'].rank(method='dense', ascending=False).astype(int)
+    a_pos = origin_pos_df[:].sort_values(by=['긍정순위']).head(20)   # 상위 20개만 출력
 
-           #9. 부정단어에서 제외시키고 싶은 단어들을 제외시킵니다.
-           neg1.remove(':D')
-           neg1.remove(':)')
-           neg1.remove('저는')
-           neg1.append('맵다')
+    #9. 부정단어에서 제외시키고 싶은 단어들을 제외시킵니다.
+    neg1.remove(':D')
+    neg1.remove(':)')
+    neg1.remove('저는')
+    neg1.append('맵다')
 
-           #10. 원본 데이터에서 부정단어가 얼마나 포함되었는지 확인하고 내리는 코드
+    #10. 원본 데이터에서 부정단어가 얼마나 포함되었는지 확인하고 내리는 코드
 
-           for i in neg1:
-               if i in origin:
-                   neg_dict['부정단어'].append(i)
-                   neg_dict['부정건수'].append(origin.count(i))
+    for i in neg1:
+        if i in origin:
+            neg_dict['부정단어'].append(i)
+            neg_dict['부정건수'].append(origin.count(i))
 
 
-           #11. 위에서 생성한 csv 파일을 판다스 데이터 프레임으로 만들어서 출력하는 코드
-           import  pandas  as  pd
+    #11. 위에서 생성한 csv 파일을 판다스 데이터 프레임으로 만들어서 출력하는 코드
+    import  pandas  as  pd
 
-           origin_nag_df = pd.DataFrame(neg_dict)
-           origin_nag_df['부정순위']=origin_nag_df['부정건수'].rank(method='dense', ascending=False).astype(int)
-           a_nag = origin_nag_df[:].sort_values(by=['부정순위']).head(20)   # 상위 20개만 출력
+    origin_nag_df = pd.DataFrame(neg_dict)
+    origin_nag_df['부정순위']=origin_nag_df['부정건수'].rank(method='dense', ascending=False).astype(int)
+    a_nag = origin_nag_df[:].sort_values(by=['부정순위']).head(20)   # 상위 20개만 출력
 
-           #12. 긍정 데이터 프레임과 부정 데이터 프레임을 옆으로 붙이는 코드
+    #12. 긍정 데이터 프레임과 부정 데이터 프레임을 옆으로 붙이는 코드
 
-           a_pos.reset_index(drop=True, inplace=True)   # a_pos 데이터 프레임의 인덱스 없앰
-           a_nag.reset_index(drop=True, inplace=True)  # a_nag 데이터 프레임의 인덱스 없앰
-           df_posneg=pd.concat([a_pos,a_nag],axis=1)   # 인덱스 없는 상태에서 그냥 그대로
-                                                       # 양옆으로 붙인다.
-              
-           
-    uploaded_file.clear()
-    return origin_pos_df, origin_nag_df, df_posneg.style.hide_index()
+    a_pos.reset_index(drop=True, inplace=True)   # a_pos 데이터 프레임의 인덱스 없앰
+    a_nag.reset_index(drop=True, inplace=True)  # a_nag 데이터 프레임의 인덱스 없앰
+    df_posneg=pd.concat([a_pos,a_nag],axis=1)   # 인덱스 없는 상태에서 그냥 그대로
+                                                # 양옆으로 붙인다.
+
+return origin_pos_df, origin_nag_df, df_posneg.style.hide_index()
 
 
 def pos_word_chart(p_df):
