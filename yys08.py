@@ -69,14 +69,12 @@ with st.form(key ='Form1'):
 
 
 def  emotion():
-        
-    user_input = st.text_input("Enter a sentence:")          
-    #uploaded_file = st.file_uploader("Choose a file")
+    
+    uploaded_file = st.file_uploader("Choose a file")
     
     if uploaded_file:
         # 파일이 업로드된 경우에만 실행될 코드들
-        #origin_text = open(uploaded_file.name, encoding="utf8")
-        origin_text = user_input
+        origin_text = open(uploaded_file.name, encoding="utf8")
         positive     = open("pos_pol_word.txt", encoding="utf8")
         negative    = open("neg_pol_word.txt", encoding="utf8" )
         st.write("파일 업로드 완료")
