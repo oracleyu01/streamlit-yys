@@ -227,7 +227,7 @@ def get_related_words(file_path, keyword):
         if keyword in sentence:  # keyword가 포함된 문장인 경우에만 단어 추출
             nouns = [noun for noun in okt.nouns(sentence) if len(noun) > 1]  # 명사 추출
             related_words.extend(nouns)
-
+    st.write(related_words)
     # 결과 출력
     if related_words:
         top_words = Counter(related_words).most_common(20)
