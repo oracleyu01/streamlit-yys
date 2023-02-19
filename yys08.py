@@ -70,9 +70,9 @@ with st.form(key ='Form1'):
 
 def  emotion():
         
-     uploaded_file = st.file_uploader("Choose a file")
+    uploaded_file = st.file_uploader("Choose a file")
     
-     if uploaded_file:
+    if uploaded_file:
         # 파일이 업로드된 경우에만 실행될 코드들
         origin_text = open(uploaded_file.name, encoding="utf8")
         positive     = open("pos_pol_word.txt", encoding="utf8")
@@ -80,7 +80,7 @@ def  emotion():
         st.write("파일 업로드 완료")
         
         # 이하 생략
-     else:
+    else:
         # 파일이 업로드되지 않은 경우에 대한 처리
         st.write("파일을 선택해주세요.")
 
