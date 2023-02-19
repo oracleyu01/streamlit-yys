@@ -254,6 +254,7 @@ elif select_language=='긍정 부정 분석':
     with tab1:
         tab1.subheader("긍정 부정 감성 분석")
         try:
+            p_df,n_df,all_df = emotion()   
             df = get_related_words('bomot3.txt', '봄')
             st.dataframe(df, 300, 400)  
  
