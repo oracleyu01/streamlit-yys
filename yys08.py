@@ -216,15 +216,15 @@ import pandas as pd
 from collections import Counter
 from konlpy.tag import Okt
 
-def get_related_words(file_path, keyword):
-    with open(file_path, 'r') as f:
+def get_related_words():
+    with open('bomot3.txt', 'r') as f:
         text = f.read()
 
     # keyword와 연관이 높은 단어 추출
     related_words = []
     okt = Okt()
     for sentence in text.split('.'):  # 문장 단위로 분리
-        if keyword in sentence:  # keyword가 포함된 문장인 경우에만 단어 추출
+        if '봄' in sentence:  # keyword가 포함된 문장인 경우에만 단어 추출
             nouns = [noun for noun in okt.nouns(sentence) if len(noun) > 1]  # 명사 추출
             related_words.extend(nouns)
     st.write(related_words)
@@ -234,7 +234,7 @@ def get_related_words(file_path, keyword):
         df = pd.DataFrame(top_words, columns=['단어', '빈도수'])
         return df
     else:
-        print(f"'{keyword}'과(와) 연관된 단어가 없습니다.")
+        print(f"'{'봄'}'과(와) 연관된 단어가 없습니다.")
         return None
         
 if select_language =='한국 야구 데이터 분석':
@@ -277,7 +277,7 @@ elif select_language=='긍정 부정 분석':
     with tab4:
         tab4.subheader("긍정단어와 부정단어 건수와 순위")
         try:
-            r_df = get_related_words('bomot3.txt', '봄')
+            r_df = get_related_words()
             st.dataframe(r_df, 300, 400)  
  
         except:
