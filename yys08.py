@@ -211,6 +211,31 @@ def neg_word_chart(n_df):
     plt.axis('off')
     st.pyplot(fig)
  
+       
+import pandas as pd
+from collections import Counter
+from konlpy.tag import Okt
+
+def get_related_words(file_path, keyword):
+    with open(file_path, 'r') as f:
+        text = f.read()
+
+    # keyword와 연관이 높은 단어 추출
+    related_words = []
+    okt = Okt()
+    for sentence in text.split('.'):  # 문장 단위로 분리
+        if keyword in sentence:  # keyword가 포함된 문장인 경우에만 단어 추출
+            nouns = [noun for noun in okt.nouns(sentence) if len(noun) > 1]  # 명사 추출
+            related_words.extend(nouns)
+
+    # 결과 출력
+    if related_words:
+        top_words = Counter(related_words).most_common(50)
+        df = pd.DataFrame(top_words, columns=['단어', '빈도수'])
+        return df
+    else:
+        print(f"'{keyword}'과(와) 연관된 단어가 없습니다.")
+        return None
         
 if select_language =='한국 야구 데이터 분석':
     tab1, tab2 = st.tabs(["📈 Bar Chart", "🗃 Data"])
@@ -229,8 +254,9 @@ elif select_language=='긍정 부정 분석':
     with tab1:
         tab1.subheader("긍정 부정 감성 분석")
         try:
-            p_df,n_df,all_df = emotion()   
-            st.dataframe(all_df, 300, 400)   
+            df = get_related_words('bomot3.txt', '봄')
+            st.dataframe(df, 300, 400)  
+ 
         except:
             pass
               
