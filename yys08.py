@@ -230,7 +230,7 @@ def get_related_words(file_path, keyword):
 
     # 결과 출력
     if related_words:
-        top_words = Counter(related_words).most_common(50)
+        top_words = Counter(related_words).most_common(20)
         df = pd.DataFrame(top_words, columns=['단어', '빈도수'])
         return df
     else:
