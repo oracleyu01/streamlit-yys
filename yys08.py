@@ -216,8 +216,8 @@ import pandas as pd
 from collections import Counter
 from konlpy.tag import Okt
 
-def get_related_words():
-    with open('bomot3.txt', 'r') as f:
+def get_related_words(file_path, keyword):
+    with open(file_path, 'r') as f:
         text = f.read()
 
     # keyword와 연관이 높은 단어 추출
@@ -234,7 +234,7 @@ def get_related_words():
         df = pd.DataFrame(top_words, columns=['단어', '빈도수'])
         return df
     else:
-        print(f"'{'봄'}'과(와) 연관된 단어가 없습니다.")
+        print(f"'{keyword}'과(와) 연관된 단어가 없습니다.")
         return None
         
 if select_language =='한국 야구 데이터 분석':
@@ -277,7 +277,7 @@ elif select_language=='긍정 부정 분석':
     with tab4:
         tab4.subheader("긍정단어와 부정단어 건수와 순위")
         try:
-            r_df = get_related_words()
+            r_df = get_related_words('bomot3.txt', '봄')
             st.dataframe(r_df, 300, 400)  
  
         except:
