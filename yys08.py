@@ -277,7 +277,6 @@ elif select_language=='긍정 부정 분석':
     with tab4:
         tab4.subheader("긍정단어와 부정단어 건수와 순위")
         try:
-            st.dataframe(all_df, 300, 400)
             r_df = get_related_words('bomot3.txt', '봄')
             st.dataframe(r_df, 300, 400)  
  
